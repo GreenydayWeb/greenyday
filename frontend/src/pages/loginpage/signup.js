@@ -1,10 +1,31 @@
 import React, { useState } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
-const { Title, Text, Form, Input, Checkbox } = Typography;
+const { Title, Text } = Typography;
+import { Checkbox, Form, Input } from "antd";
 
-function login() {
+const fontStyle = {
+  color: "rgba(70, 70, 70, 1)",
+  fontSize: "18px",
+  fontWeight: "700",
+  fontFamily: "sansneo_light",
+};
+
+// const boxStyle = {
+//   bordered: false,
+// };
+
+const login = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -13,13 +34,6 @@ function login() {
   };
   const handleCancel = () => {
     setIsModalOpen(false);
-  };
-
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -57,62 +71,74 @@ function login() {
         </Text>
         <Form
           name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
           initialValues={{
             remember: true,
           }}
+          layout="vertical"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item
-            label="Username"
-            name="username"
+            label={<Text style={fontStyle}>이메일</Text>}
+            name="email"
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "이메일을 입력해 주세요!",
               },
             ]}
           >
-            <Input />
+            <Input
+              style={{ borderRadius: "0px" }}
+              placeholder="예) greenyday1234@gmail.com"
+            />
           </Form.Item>
 
           <Form.Item
-            label="Password"
+            label={<Text style={fontStyle}>비밀번호</Text>}
             name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "비밀번호를 입력해 주세요!",
               },
             ]}
           >
-            <Input.Password />
+            <Input.Password
+              style={{ borderRadius: "0px" }}
+              placeholder="영문,숫자 조합 8-16자"
+            />
           </Form.Item>
 
           <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
+            name="confirm"
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: "비밀번호를 한번 더 입력해주세요!",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error("비밀번호가 일치하지 않습니다.")
+                  );
+                },
+              }),
+            ]}
           >
-            <Checkbox>Remember me</Checkbox>
+            <Input.Password
+              style={{ borderRadius: "0px" }}
+              placeholder="비밀번호를 한번 더 입력해주세요!"
+            />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
@@ -121,5 +147,5 @@ function login() {
       </Modal>
     </>
   );
-}
+};
 export default login;
