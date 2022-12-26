@@ -14,15 +14,19 @@ class SignupSerializer(serializers.ModelSerializer):
                 email=validated_data['email'],
                 nickname=validated_data['nickname'],
                 phone=validated_data['phone'],
+                username=validated_data['username'],
+                birth=validated_data['birth'],
             )
             user.set_password(validated_data['password'])
 
         else:
             user = get_user_model().objects.create(
-            email=validated_data['email'],
-            nickname=validated_data['nickname'],
-            is_kakao=True,
-            phone=validated_data['phone'],
+                email=validated_data['email'],
+                nickname=validated_data['nickname'],
+                is_kakao=True,
+                phone=validated_data['phone'],
+                username=validated_data['username'],
+                birth=validated_data['birth'],
             )
             user.set_unusable_password()
 
