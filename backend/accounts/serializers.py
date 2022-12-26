@@ -35,7 +35,7 @@ class SignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["pk", "email", "password", "nickname", "phone"]
+        fields = ["pk", "email", "password", "nickname", "phone", 'username', 'birth']
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=64)
