@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register('menus', views.MenuViewSet)
+router.register('items', views.ItemViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
