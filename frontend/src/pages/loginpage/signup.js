@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
-const { Title, Text } = Typography;
+const { Text } = Typography;
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
 
 const fontStyle = {
@@ -13,7 +13,6 @@ const fontStyle = {
 
 const Signup = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const onFinish = (values) => {
     console.log("Success:", values);
   };
