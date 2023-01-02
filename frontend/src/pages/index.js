@@ -1,5 +1,6 @@
+import wrapper from "../store/configureStore";
 function Home() {
-  return <div>Welcome to Next.jss!</div>;
+  return <div></div>;
 }
 
 export default Home;

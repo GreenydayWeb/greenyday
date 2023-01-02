@@ -3,7 +3,7 @@ import { Typography } from "antd";
 import { Button, Modal } from "antd";
 const { Text } = Typography;
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
-
+import { useDispatch } from "react-redux";
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",
   fontSize: "18px",
@@ -12,7 +12,9 @@ const fontStyle = {
 };
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };

@@ -1,7 +1,6 @@
-import { useState, createContext } from "react";
-
-function MyApp({ Component, pageProps }) {
+import wrapper from "../store/configureStore";
+function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
 
-export default MyApp;
+export default wrapper.withRedux(App);
