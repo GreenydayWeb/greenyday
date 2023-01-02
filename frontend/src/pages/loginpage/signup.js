@@ -4,6 +4,8 @@ import { Button, Modal } from "antd";
 const { Text } = Typography;
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
 import { useDispatch } from "react-redux";
+import { signupRequestAction } from "../../reducers/user";
+
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",
   fontSize: "18px",
@@ -17,6 +19,15 @@ const Signup = () => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    const data = {
+      email: values.email,
+      password: values.password,
+      nickname: values.nickname,
+      phone: values.phonenumber,
+    };
+    console.log(data);
+
+    dispatch(signupRequestAction(data));
   };
 
   const onFinishFailed = (errorInfo) => {
