@@ -5,7 +5,7 @@ import { backUrl } from "../config/config";
 import { LOG_IN_REQUEST } from "../reducers/user";
 
 function* logIn(action) {
-  axios.post(backUrl + "/accounts/signup", action.data).then((response) => {
+  axios.post(backUrl + "/accounts/signup/", action.data).then((response) => {
     console.log(response.data);
   });
 }

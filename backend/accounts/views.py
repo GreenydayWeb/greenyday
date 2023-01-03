@@ -21,6 +21,7 @@ def signup(request):
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+    print(serializer.data)
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])

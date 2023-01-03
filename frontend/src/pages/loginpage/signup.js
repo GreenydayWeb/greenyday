@@ -24,6 +24,8 @@ const Signup = () => {
       password: values.password,
       nickname: values.nickname,
       phone: values.phonenumber,
+      username: "김지민",
+      birth: "1997-08-13",
     };
     console.log(data);
 
