@@ -2,6 +2,14 @@ import { Menu } from "antd";
 import LOGIN from "../loginpage/login";
 import SIGNUP from "../loginpage/signup";
 
+const styles_menu = {
+  fontSize: "32px",
+  fontWeight: "400",
+  color: "rgba(0, 0, 0, 1)",
+  fontFamily: "sansneo_light",
+
+  "text-decoration": "none",
+};
 const items = [
   {
     label: (
@@ -82,17 +90,42 @@ function Head() {
   }
 
   return (
-    // <div>
-    //   <Menu mode="horizontal">
-    //     <Menu.Item>Disbaled</Menu.Item>
-    //   </Menu>
-    // </div>
-    <Menu
-      className="modified-item"
-      mode="horizontal"
-      items={items}
-      style={{ border: "none" }}
-    />
+    <div style={{ display: "flex" }}>
+      <div style={{ padding: "20px" }}>
+        <a href="/" style={styles_menu}>
+          HOME
+        </a>
+      </div>
+      <div style={{ padding: "20px" }}>
+        <a href="/" style={styles_menu}>
+          MENU
+        </a>
+      </div>
+      <div style={{ padding: "20px" }}>
+        <a href="/" style={styles_menu}>
+          STORE
+        </a>
+      </div>
+      <div style={{ padding: "20px" }}>
+        <a href="/" style={styles_menu}>
+          CONTACT
+        </a>
+      </div>
+
+      <div style={{ padding: "20px" }}>
+        <LOGIN />
+      </div>
+      <div style={{ padding: "20px" }}>
+        <SIGNUP />
+      </div>
+    </div>
+
+    // <Menu
+    //   className="modified-item"
+    //   mode="horizontal"
+    //   items={items}
+    //   style={{ border: "none", width: "20", height: "100%" }}
+    // />
   );
 }
 
