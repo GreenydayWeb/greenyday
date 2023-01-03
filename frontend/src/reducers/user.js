@@ -21,18 +21,20 @@ export const initialState = {
   loginData: {},
 };
 
-export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
+export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
 
 export const signupRequestAction = (data) => ({
-  type: LOG_IN_REQUEST,
+  type: SIGN_UP_REQUEST,
   data,
 });
 
 const reducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case LOG_IN_REQUEST:
-        draft.logInLoading = true;
+      case SIGN_UP_SUCCESS:
+        draft.signUpDone = true;
         break;
       default:
         break;

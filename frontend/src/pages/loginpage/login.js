@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
-const { Text } = Typography;
+import { useDispatch, useSelector } from "react-redux";
 import { Divider, Form, Input, Row, Col } from "antd";
+import { LOG_IN_REQUEST } from "../../reducers/user";
 
+const { Text } = Typography;
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",
   fontSize: "18px",
@@ -12,10 +14,12 @@ const fontStyle = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    dispatch({ type: LOG_IN_REQUEST, values });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -34,9 +38,18 @@ const Login = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+      <div
+        type="primary"
+        onClick={showModal}
+        style={{
+          fontSize: "32px",
+          fontWeight: "400",
+          color: "rgba(0, 0, 0, 1)",
+          fontFamily: "sansneo_light",
+        }}
+      >
+        로그인
+      </div>
       <Modal
         title={
           <Text

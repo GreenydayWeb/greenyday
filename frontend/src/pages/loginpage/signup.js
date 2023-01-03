@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
 const { Text } = Typography;
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signupRequestAction } from "../../reducers/user";
+import Router from "next/router";
+import { frontUrl } from "../../config/config";
 
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",
@@ -15,20 +17,31 @@ const fontStyle = {
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const { signUpDone } = useSelector((state) => state.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (signUpDone) {
+      Router.push(frontUrl + "/loginpage/login");
+    }
+  }, [signUpDone]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
+
     const data = {
       email: values.email,
       password: values.password,
       nickname: values.nickname,
       phone: values.phonenumber,
-      username: "김지민",
-      birth: "1997-08-13",
+      username: values.name,
+      birth:
+        values.datepicker.$y +
+        "-" +
+        String(parseInt(values.datepicker.$M) + 1) +
+        "-" +
+        values.datepicker.$D,
     };
-    console.log(data);
-
     dispatch(signupRequestAction(data));
   };
 
@@ -48,9 +61,18 @@ const Signup = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+      <div
+        type="primary"
+        onClick={showModal}
+        style={{
+          fontSize: "32px",
+          fontWeight: "400",
+          color: "rgba(0, 0, 0, 1)",
+          fontFamily: "sansneo_light",
+        }}
+      >
+        회원가입
+      </div>
       <Modal
         title={
           <Text
@@ -196,7 +218,7 @@ const Signup = () => {
           <Row justify="space-between">
             <Col span={11}>
               <Form.Item
-                name="date-picker"
+                name="datepicker"
                 label={<Text style={fontStyle}>생년월일</Text>}
                 rules={[
                   {
