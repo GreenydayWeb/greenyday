@@ -30,21 +30,22 @@ function* SignUp(action) {
 }
 
 //로그인 saga
-function logInAPI(data) {
-  console.log(data);
-  return axios.post(backUrl + "/accounts/login/", data);
+function logInAPI(values) {
+  return axios.post(backUrl + "/accounts/login/", values);
 }
 
 function* LogIn(action) {
   try {
-    const result = yield call(logInAPI, action.data);
+    const result = yield call(logInAPI, action.values);
     console.log("access", result.data);
+
     // yield put({
     //   type: SIGN_UP_SUCCESS,
     // });
   } catch (err) {
     console.log("fail");
     console.log(err.response);
+
     // yield put({
     //   type: SIGN_UP_FAILURE,
     //   error: err.response.data,
