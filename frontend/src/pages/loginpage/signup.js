@@ -18,13 +18,15 @@ const fontStyle = {
 const Signup = () => {
   const dispatch = useDispatch();
   const { signUpDone } = useSelector((state) => state.user);
+  const { emailOverLap } = useSelector((state) => state.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log("이메일중복", emailOverLap);
 
   useEffect(() => {
     if (signUpDone) {
       Router.push(frontUrl + "/loginpage/login");
     }
-  }, [signUpDone]);
+  }, [signUpDone, emailOverLap]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -42,6 +44,7 @@ const Signup = () => {
         "-" +
         values.datepicker.$D,
     };
+
     dispatch(signupRequestAction(data));
   };
 
@@ -112,26 +115,76 @@ const Signup = () => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
-            label={<Text style={fontStyle}>이메일</Text>}
-            name="email"
-            rules={[
-              {
-                type: "email",
-                message: "올바른 이메일을 입력해 주세요.",
-              },
+          <div>
+            {" "}
+            {!emailOverLap ? (
+              <Form.Item
+                label={<Text style={fontStyle}>이메일</Text>}
+                name="email"
+                rules={[
+                  {
+                    type: "email",
+                    message: "올바른 이메일을 입력해 주세요.",
+                  },
 
-              {
-                required: true,
-                message: "이메일을 입력해 주세요!",
-              },
-            ]}
-          >
-            <Input
-              style={{ borderRadius: "0px" }}
-              placeholder="예) greenyday1234@gmail.com"
-            />
-          </Form.Item>
+                  {
+                    required: true,
+                    message: "이메일을 입력해 주세요!",
+                  },
+                  // {
+                  //   validator(_, value) {
+                  //     if (!emailOverLap) {
+                  //       return Promise.resolve();
+                  //     }
+                  //     return Promise.reject(
+                  //       new Error("중복된 이메일입니다. 다시 입력해 주세요.")
+                  //     );
+                  //   },
+                  // },
+                ]}
+              >
+                <Input
+                  style={{ borderRadius: "0px" }}
+                  placeholder="예) greenyday1234@gmail.com"
+                />
+              </Form.Item>
+            ) : (
+              <div>
+                <Form.Item
+                  label={<Text style={fontStyle}>이메일</Text>}
+                  name="email"
+                  validateStatus="error"
+                  help="중복된 이메일입니다."
+                  rules={[
+                    {
+                      type: "email",
+                      message: "올바른 이메일을 입력해 주세요.",
+                    },
+
+                    {
+                      required: true,
+                      message: "이메일을 입력해 주세요!",
+                    },
+                    // {
+                    //   validator(_, value) {
+                    //     if (!emailOverLap) {
+                    //       return Promise.resolve();
+                    //     }
+                    //     return Promise.reject(
+                    //       new Error("중복된 이메일입니다. 다시 입력해 주세요.")
+                    //     );
+                    //   },
+                    // },
+                  ]}
+                >
+                  <Input
+                    style={{ borderRadius: "0px" }}
+                    placeholder="예) greenyday1234@gmail.com"
+                  />
+                </Form.Item>
+              </div>
+            )}{" "}
+          </div>
 
           <Form.Item
             label={<Text style={fontStyle}>비밀번호</Text>}

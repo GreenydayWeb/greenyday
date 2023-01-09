@@ -4,9 +4,9 @@ import { backUrl } from "../config/config";
 
 import { SIGN_UP_REQUEST } from "../reducers/user";
 import { SIGN_UP_SUCCESS } from "../reducers/user";
-import { LOG_IN_REQUEST } from "../reducers/user";
+import { SIGN_UP_FAIL_EMAILOVERLAP } from "../reducers/user";
 
-const errlist = ["email", "username", "nickname", "phone"];
+import { LOG_IN_REQUEST } from "../reducers/user";
 
 //회원가입 saga
 function signUpAPI(data) {
@@ -26,7 +26,21 @@ function* SignUp(action) {
     console.log(err.response);
     console.log(err.response.data);
 
-    console.log(1);
+    const errObject = err.response.data;
+
+    for (var value in errObject) {
+      if (value == "email") {
+        console.log("emailerror");
+        yield put({
+          type: SIGN_UP_FAIL_EMAILOVERLAP,
+        });
+      } else if (value == "nickname") {
+        console.log("nickerror");
+      } else if (value == "phone") {
+        console.log("phoneerror");
+      }
+    }
+
     // yield put({
     //   type: SIGN_UP_FAILURE,
     //   error: err.response.data,

@@ -19,10 +19,15 @@ export const initialState = {
   meAddress: null,
   signUpDate: {},
   loginData: {},
+
+  emailOverLap: false,
 };
 
+//회원가입 action
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const SIGN_UP_FAIL_EMAILOVERLAP = "SIGN_UP_FAIL_EMAILOVERLAP";
+
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
 
 export const signupRequestAction = (data) => ({
@@ -36,6 +41,11 @@ const reducer = (state = initialState, action) =>
       case SIGN_UP_SUCCESS:
         draft.signUpDone = true;
         break;
+      case SIGN_UP_FAIL_EMAILOVERLAP:
+        draft.signUpDone = false;
+        draft.emailOverLap = true;
+        break;
+
       default:
         break;
     }
