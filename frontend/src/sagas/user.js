@@ -6,6 +6,8 @@ import { SIGN_UP_REQUEST } from "../reducers/user";
 import { SIGN_UP_SUCCESS } from "../reducers/user";
 import { LOG_IN_REQUEST } from "../reducers/user";
 
+const errlist = ["email", "username", "nickname", "phone"];
+
 //회원가입 saga
 function signUpAPI(data) {
   console.log(data);
@@ -22,6 +24,9 @@ function* SignUp(action) {
   } catch (err) {
     console.log("fail");
     console.log(err.response);
+    console.log(err.response.data);
+
+    console.log(1);
     // yield put({
     //   type: SIGN_UP_FAILURE,
     //   error: err.response.data,
