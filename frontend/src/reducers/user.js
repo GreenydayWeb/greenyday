@@ -27,6 +27,7 @@ export const initialState = {
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAIL_EMAILOVERLAP = "SIGN_UP_FAIL_EMAILOVERLAP";
+export const ON_CHANGE_EMAILOVERLAP = "ON_CHANGE_EMAILOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
 
@@ -44,6 +45,10 @@ const reducer = (state = initialState, action) =>
       case SIGN_UP_FAIL_EMAILOVERLAP:
         draft.signUpDone = false;
         draft.emailOverLap = true;
+        break;
+
+      case ON_CHANGE_EMAILOVERLAP:
+        draft.emailOverLap = false;
         break;
 
       default:

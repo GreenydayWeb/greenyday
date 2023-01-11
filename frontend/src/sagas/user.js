@@ -22,15 +22,9 @@ function* SignUp(action) {
       type: SIGN_UP_SUCCESS,
     });
   } catch (err) {
-    console.log("fail");
-    console.log(err.response);
-    console.log(err.response.data);
-
     const errObject = err.response.data;
-
     for (var value in errObject) {
       if (value == "email") {
-        console.log("emailerror");
         yield put({
           type: SIGN_UP_FAIL_EMAILOVERLAP,
         });

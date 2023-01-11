@@ -5,6 +5,7 @@ const { Text } = Typography;
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequestAction } from "../../reducers/user";
+import { ON_CHANGE_EMAILOVERLAP } from "../../reducers/user";
 import Router from "next/router";
 import { frontUrl } from "../../config/config";
 
@@ -18,9 +19,12 @@ const fontStyle = {
 const Signup = () => {
   const dispatch = useDispatch();
   const { signUpDone } = useSelector((state) => state.user);
-  const { emailOverLap } = useSelector((state) => state.user);
+  var { emailOverLap } = useSelector((state) => state.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log("이메일중복", emailOverLap);
+
+  const emailOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+  };
 
   useEffect(() => {
     if (signUpDone) {
@@ -115,8 +119,10 @@ const Signup = () => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
+          {/* 이메일 */}
           <div>
             {" "}
+            {/* 이메일이 중복되지 않고, 이전 이메일과 달라진 겨우 */}
             {!emailOverLap ? (
               <Form.Item
                 label={<Text style={fontStyle}>이메일</Text>}
@@ -131,16 +137,6 @@ const Signup = () => {
                     required: true,
                     message: "이메일을 입력해 주세요!",
                   },
-                  // {
-                  //   validator(_, value) {
-                  //     if (!emailOverLap) {
-                  //       return Promise.resolve();
-                  //     }
-                  //     return Promise.reject(
-                  //       new Error("중복된 이메일입니다. 다시 입력해 주세요.")
-                  //     );
-                  //   },
-                  // },
                 ]}
               >
                 <Input
@@ -155,37 +151,16 @@ const Signup = () => {
                   name="email"
                   validateStatus="error"
                   help="중복된 이메일입니다."
-                  rules={[
-                    {
-                      type: "email",
-                      message: "올바른 이메일을 입력해 주세요.",
-                    },
-
-                    {
-                      required: true,
-                      message: "이메일을 입력해 주세요!",
-                    },
-                    // {
-                    //   validator(_, value) {
-                    //     if (!emailOverLap) {
-                    //       return Promise.resolve();
-                    //     }
-                    //     return Promise.reject(
-                    //       new Error("중복된 이메일입니다. 다시 입력해 주세요.")
-                    //     );
-                    //   },
-                    // },
-                  ]}
                 >
                   <Input
                     style={{ borderRadius: "0px" }}
                     placeholder="예) greenyday1234@gmail.com"
+                    onChange={emailOnChange}
                   />
                 </Form.Item>
               </div>
             )}{" "}
           </div>
-
           <Form.Item
             label={<Text style={fontStyle}>비밀번호</Text>}
             name="password"
@@ -201,7 +176,6 @@ const Signup = () => {
               placeholder="영문,숫자 조합 8-16자"
             />
           </Form.Item>
-
           <Form.Item
             name="confirm"
             dependencies={["password"]}
@@ -228,7 +202,6 @@ const Signup = () => {
               placeholder="비밀번호를 한번 더 입력해 주세요!"
             />
           </Form.Item>
-
           <Row justify="space-between">
             <Col span={11}>
               <Form.Item
@@ -267,7 +240,6 @@ const Signup = () => {
               </Form.Item>
             </Col>
           </Row>
-
           <Row justify="space-between">
             <Col span={11}>
               <Form.Item
@@ -306,9 +278,7 @@ const Signup = () => {
               </Form.Item>
             </Col>
           </Row>
-
           <Divider />
-
           <Row gutter={[3, 20]}>
             <Col span={24}>
               <Row gutter={[10, 10]}>
