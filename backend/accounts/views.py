@@ -29,6 +29,7 @@ def signup(request):
 def login(request):
     serializer = LoginSerializer(data=request.data)
     if not serializer.is_valid():
+        print(serializer.data)
         return JsonResponse({"message": "Request Body Error."}, status=status.HTTP_409_CONFLICT)
     if serializer.validated_data['email'] == "None":
         return JsonResponse({"message" : "올바르지 않은 회원 정보입니다."}, status=status.HTTP_400_BAD_REQUEST)

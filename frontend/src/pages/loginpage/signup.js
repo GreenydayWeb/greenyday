@@ -26,6 +26,18 @@ const Signup = () => {
     dispatch({ type: ON_CHANGE_EMAILOVERLAP });
   };
 
+  const nameOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+  };
+
+  const nicknameOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+  };
+
+  const phoneOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+  };
+
   useEffect(() => {
     if (signUpDone) {
       Router.push(frontUrl + "/loginpage/login");
