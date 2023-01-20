@@ -21,12 +21,15 @@ export const initialState = {
   loginData: {},
 
   emailOverLap: false,
+  nicknameOverLap: false,
 };
 
 //회원가입 action
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAIL_EMAILOVERLAP = "SIGN_UP_FAIL_EMAILOVERLAP";
+export const SIGN_UP_FAIL_NICKNAMEOVERLAP = "SIGN_UP_FAIL_NICKNAMEOVERLAP";
+
 export const ON_CHANGE_EMAILOVERLAP = "ON_CHANGE_EMAILOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
@@ -50,6 +53,9 @@ const reducer = (state = initialState, action) =>
       case ON_CHANGE_EMAILOVERLAP:
         draft.emailOverLap = false;
         break;
+
+      case SIGN_UP_FAIL_NICKNAMEOVERLAP:
+        draft.nicknameOverLap = false;
 
       default:
         break;

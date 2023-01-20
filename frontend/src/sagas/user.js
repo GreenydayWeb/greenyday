@@ -7,6 +7,7 @@ import { SIGN_UP_SUCCESS } from "../reducers/user";
 import { SIGN_UP_FAIL_EMAILOVERLAP } from "../reducers/user";
 
 import { LOG_IN_REQUEST } from "../reducers/user";
+import { SIGN_UP_FAIL_NICKNAMEOVERLAP } from "../reducers/user";
 
 //회원가입 saga
 function signUpAPI(data) {
@@ -29,7 +30,7 @@ function* SignUp(action) {
           type: SIGN_UP_FAIL_EMAILOVERLAP,
         });
       } else if (value == "nickname") {
-        console.log("nickerror");
+        yield put({ type: SIGN_UP_FAIL_NICKNAMEOVERLAP });
       } else if (value == "phone") {
         console.log("phoneerror");
       }
