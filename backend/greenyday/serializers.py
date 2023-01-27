@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from .models import Item
+from .models import Item_Img
 
-class ItemSerializer(serializers.ModelSerializer):
+
+class ItemImageSerializer(serializers.HyperlinkedModelSerializer):
+    photo = serializers.ImageField(use_url=True)
     class Meta:
-        model = Item
-        fields = '__all__'
+        model = Item_Img
+        fields = ['photo']

@@ -1,10 +1,7 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 from . import views
-
-router = DefaultRouter()
-router.register('items', views.ItemViewSet)
+from .views import ItemList
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('items/', ItemList.as_view(), name='item_list'),
 ]
