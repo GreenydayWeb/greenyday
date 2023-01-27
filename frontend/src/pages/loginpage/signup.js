@@ -154,7 +154,10 @@ const Signup = () => {
                 ]}
               >
                 <Input
-                  style={{ borderRadius: "0px" }}
+                  style={{
+                    borderRadius: "19px",
+                    background: "rgba(217, 217, 217, 1)",
+                  }}
                   placeholder="예) greenyday1234@gmail.com"
                 />
               </Form.Item>

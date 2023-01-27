@@ -2,145 +2,46 @@ import { Menu } from "antd";
 import LOGIN from "../loginpage/login";
 import SIGNUP from "../loginpage/signup";
 
-const styles_menu = {
-  fontSize: "32px",
-  fontWeight: "400",
-  color: "rgba(0, 0, 0, 1)",
-  fontFamily: "sansneo_light",
-
-  "text-decoration": "none",
-};
-const items = [
-  {
-    label: (
-      <a
-        href="/"
-        style={{
-          fontSize: "32px",
-          fontWeight: "400",
-          color: "rgba(0, 0, 0, 1)",
-          fontFamily: "sansneo_light",
-        }}
-      >
-        HOME
-      </a>
-    ),
-    key: "alipay",
-  },
-  {
-    label: (
-      <a
-        href="/"
-        style={{
-          fontSize: "32px",
-          fontWeight: "400",
-          color: "rgba(0, 0, 0, 1)",
-          fontFamily: "sansneo_light",
-        }}
-      >
-        MENU
-      </a>
-    ),
-    key: "alipay",
-  },
-  {
-    label: (
-      <a
-        href="/"
-        style={{
-          fontSize: "32px",
-          fontWeight: "400",
-          color: "rgba(0, 0, 0, 1)",
-          fontFamily: "sansneo_light",
-        }}
-      >
-        STORE
-      </a>
-    ),
-  },
-  {
-    label: (
-      <a
-        href="/"
-        style={{
-          fontSize: "32px",
-          fontWeight: "400",
-          color: "rgba(0, 0, 0, 1)",
-          fontFamily: "sansneo_light",
-        }}
-      >
-        CONTACT
-      </a>
-    ),
-  },
-  {
-    label: <SIGNUP />,
-  },
-  {
-    label: <LOGIN />,
-  },
-];
-
-function Head() {
-  function getItem(label, key) {
-    return {
-      key,
-      label,
-    };
-  }
-
+function Header() {
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ padding: "20px" }}>
-        <a href="/" style={styles_menu}>
-          HOME
-        </a>
-      </div>
-      <div style={{ padding: "20px" }}>
-        <a href="/" style={styles_menu}>
-          MENU
-        </a>
-      </div>
-      <div style={{ padding: "20px" }}>
-        <a href="/" style={styles_menu}>
-          STORE
-        </a>
-      </div>
-      <div style={{ padding: "20px" }}>
-        <a href="/" style={styles_menu}>
-          CONTACT
-        </a>
-      </div>
+    <header class="bg-[#ECE4D7]">
+      <nav>
+        {/* 맨 위 헤더 */}
+        <div class="flex place-items-center">
+          <img class="w-10 h-10" src="/instagram.png" />
+          <div>Greeny Day</div>
+          <ul class="flex font-[300]">
+            <li class="mr-3">
+              <a href="/loginpage/login">Login</a>
+            </li>
+            <li>
+              <a href="/loginpage/signup">Sign up</a>
+            </li>
+          </ul>
+        </div>
+        {/* 두 번째 헤더 */}
+        <div>
+          <ul class="flex place-items-center">
+            <li class="">
+              <a href="/loginpage/login">About</a>
+            </li>
 
-      <div style={{ padding: "20px" }}>
-        <LOGIN />
-      </div>
-      <div style={{ padding: "20px" }}>
-        <SIGNUP />
-      </div>
-    </div>
+            <li class="">
+              <a href="/loginpage/login">Nutrition</a>
+            </li>
 
-    // <Menu
-    //   className="modified-item"
-    //   mode="horizontal"
-    //   items={items}
-    //   style={{ border: "none", width: "20", height: "100%" }}
-    // />
+            <li class="">
+              <a href="/loginpage/login">Menu</a>
+            </li>
+
+            <li class="">
+              <a href="/loginpage/login">Franchise</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 }
 
-// function Head() {
-//   return (
-//     <Menu mode="horizontal" onClick={() => router.push("/n")}>
-//       <Menu.Item key="login">
-//         <span className="nav-text">Login</span>
-//       </Menu.Item>
-
-//       <Menu.Item key="register" onClick={() => router.push("/")}>
-//         <span className="nav-text">Register</span>
-//       </Menu.Item>
-//     </Menu>
-//   );
-// }
-
-export default Head;
+export default Header;

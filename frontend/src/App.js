@@ -5,7 +5,7 @@ import "../styles/globals.css";
 
 const App = () => (
   <div className="App">
-    <Button type="primary">Button</Button>s
+    <Button type="primary">Button</Button>
   </div>
 );
 
