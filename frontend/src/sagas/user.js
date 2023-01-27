@@ -24,14 +24,18 @@ function* SignUp(action) {
     });
   } catch (err) {
     const errObject = err.response.data;
+    console.log(errObject);
     for (var value in errObject) {
       if (value == "email") {
         yield put({
           type: SIGN_UP_FAIL_EMAILOVERLAP,
         });
-      } else if (value == "nickname") {
+      }
+      if (value == "nickname") {
+        console.log("닉네임 에러");
         yield put({ type: SIGN_UP_FAIL_NICKNAMEOVERLAP });
-      } else if (value == "phone") {
+      }
+      if (value == "phone") {
         console.log("phoneerror");
       }
     }

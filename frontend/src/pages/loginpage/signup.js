@@ -6,6 +6,7 @@ import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequestAction } from "../../reducers/user";
 import { ON_CHANGE_EMAILOVERLAP } from "../../reducers/user";
+import { ON_CHANGE_NICKNAMEOVERLAP } from "../../reducers/user";
 import Router from "next/router";
 import { frontUrl } from "../../config/config";
 
@@ -20,6 +21,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { signUpDone } = useSelector((state) => state.user);
   var { emailOverLap } = useSelector((state) => state.user);
+  var { nicknameOverLap } = useSelector((state) => state.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const emailOnChange = (event) => {
@@ -31,7 +33,7 @@ const Signup = () => {
   };
 
   const nicknameOnChange = (event) => {
-    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+    dispatch({ type: ON_CHANGE_NICKNAMEOVERLAP });
   };
 
   const phoneOnChange = (event) => {
@@ -216,6 +218,7 @@ const Signup = () => {
           </Form.Item>
           <Row justify="space-between">
             <Col span={11}>
+              {/* 이름 입력 */}
               <Form.Item
                 name="name"
                 label={<Text style={fontStyle}>이름</Text>}
@@ -234,26 +237,46 @@ const Signup = () => {
               </Form.Item>
             </Col>
             <Col span={11}>
-              <Form.Item
-                name="nickname"
-                label={<Text style={fontStyle}>닉네임</Text>}
-                rules={[
-                  {
-                    required: true,
-                    message: "닉네임을 입력해 주세요!",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="예) 홍길동"
-                  style={{ borderRadius: "0px" }}
-                />
-              </Form.Item>
+              {/* 닉네임 입력 */}
+
+              <div>
+                {!nicknameOverLap ? (
+                  <Form.Item
+                    name="nickname"
+                    label={<Text style={fontStyle}>닉네임</Text>}
+                    rules={[
+                      {
+                        required: true,
+                        message: "닉네임을 입력해 주세요!",
+                        whitespace: true,
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="예) 홍길동"
+                      style={{ borderRadius: "0px" }}
+                    />
+                  </Form.Item>
+                ) : (
+                  <Form.Item
+                    name="nickname"
+                    label={<Text style={fontStyle}>닉네임</Text>}
+                    validateStatus="error"
+                    help="중복된 닉네임입니다."
+                  >
+                    <Input
+                      placeholder="예) 홍길동"
+                      style={{ borderRadius: "0px" }}
+                      onChange={nicknameOnChange}
+                    />
+                  </Form.Item>
+                )}
+              </div>
             </Col>
           </Row>
           <Row justify="space-between">
             <Col span={11}>
+              {/* 생년월일 입력 */}
               <Form.Item
                 name="datepicker"
                 label={<Text style={fontStyle}>생년월일</Text>}
