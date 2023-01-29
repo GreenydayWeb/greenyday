@@ -4,23 +4,26 @@ import SIGNUP from "../loginpage/signup";
 
 import axios from "axios";
 import { backUrl } from "../../config/config";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
-  var imgurl = "";
-  useEffect(() => {
-    axios.get(backUrl + "/items/").then((res) => {
-      imgurl = backUrl + res.data.items[0].image[0];
-      console.log(typeof imgurl);
-    });
-  });
+  // const [imgurl, setimgurl] = useState("");
+  // useEffect(() => {
+  //   axios.get(backUrl + "/items/").then(
+  //     (res) => {
+  //       setimgurl(res.data.items[0].image[0]);
+  //     },
+  //     [imgurl]
+  //   );
+  // });
+
   return (
     <header class="bg-[#ECE4D7]">
       <nav>
         {/* 맨 위 헤더 */}
         <div class="flex justify-between place-items-center mx-30">
-          {/* <img class="w-10 h-10" src="/instagram.png" /> */}
-          <img class="w-10 h-10" src={""} />
+          <img class="w-10 h-10" src="/instagram.png" />
+          {/* <img class="w-10 h-10" src={backUrl + imgurl} /> */}
 
           <ul class="flex font-[300]">
             <li class="mr-3">
