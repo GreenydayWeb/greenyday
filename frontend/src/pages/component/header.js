@@ -37,8 +37,12 @@ function Header() {
         {/* 두 번째 헤더 */}
         <div>
           <ul class="flex justify-between  place-items-center">
-            <li class="">
+            <li data-dropdown-toggle="dropdownNavbar" class="">
               <a href="/loginpage/login">About</a>
+            </li>
+
+            <li class="">
+              <a href="/loginpage/login">Menu</a>
             </li>
 
             <li class="">
@@ -46,7 +50,7 @@ function Header() {
             </li>
 
             <li class="">
-              <a href="/loginpage/login">Menu</a>
+              <a href="/loginpage/login">Store</a>
             </li>
 
             <li class="">
