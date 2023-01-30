@@ -37,8 +37,17 @@ function Header() {
         {/* 두 번째 헤더 */}
         <div>
           <ul class="flex justify-between  place-items-center">
-            <li data-dropdown-toggle="dropdownNavbar" class="">
-              <a href="/loginpage/login">About</a>
+            <li class="group relative dropdown">
+              <a class="" href="/loginpage/login">
+                About
+              </a>
+              <ul class="absolute hidden  group-hover:block">
+                <li class="">
+                  <a class="p" href="#">
+                    One
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="">
