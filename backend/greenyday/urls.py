@@ -1,7 +1,13 @@
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from . import views
-from .views import ItemList
+from .views import MainList
+
+router = DefaultRouter()
+router.register('item', views.ItemViewSet)
 
 urlpatterns = [
-    path('items/', ItemList.as_view(), name='item_list'),
+    path('', include(router.urls)),
+    path('main/', MainList.as_view(), name='main_list'),
 ]

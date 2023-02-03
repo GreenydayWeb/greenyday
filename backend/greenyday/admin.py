@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Item, Item_Img, Category
+from .models import Item, Item_Img, Category, Event_Img
+
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category_id', 'calorie', 'price', 'description']
+    list_display = ['id', 'name', 'category_id', 'calorie', 'price', 'description']
     list_display_links = ['name']
 
 
@@ -13,7 +14,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Item_Img)
 class ImgAdmin(admin.ModelAdmin):
-    list_display = ['item_id', 'name', 'photo_tag']
+    list_display = ['id', 'item_id', 'name', 'photo_tag']
     list_display_links = ['name']
 
     def photo_tag(self, img):
@@ -21,4 +22,12 @@ class ImgAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['id', 'name']
+
+@admin.register(Event_Img)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'photo_tag']
+    list_display_links = ['name']
+
+    def photo_tag(self, img):
+        return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")

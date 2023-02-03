@@ -1,16 +1,31 @@
 from django.shortcuts import render
-from rest_framework.permissions import AllowAny
-from .models import Item, Category, Item_Img
-from .serializers import ItemImageSerializer
+from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.response import Response
+
+from .models import Item, Category, Item_Img, Event_Img
 from django.http import JsonResponse
-from rest_framework import status, generics
+from rest_framework import status, generics, viewsets
+from .serializers import ItemSerializer
 
 
-class ItemList(generics.ListAPIView):
+class ItemViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    permission_classes = [AllowAny]
+
+class MainList(generics.ListAPIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        item = Item.objects.all()
+        event = Event_Img.objects.all()
+        events = []
+        for i in event:
+            events.append({
+                'pk' : i.pk,
+                'name' : i.name,
+                'image' : i.photo.url
+            })
+        item = Item.objects.order_by("?")[:4]
         items = []
         for i in item:
             category = Category.objects.get(pk=i.category_id)
@@ -19,12 +34,13 @@ class ItemList(generics.ListAPIView):
             for img in image:
                 images.append(img.photo.url)
             items.append({
-                'category' : category.name,
-                'name' : i.name,
-                'calorie' : i.calorie,
-                'price' : i.price,
-                'description' : i.description,
-                'image' : images
+                'pk': i.pk,
+                'category': category.name,
+                'name': i.name,
+                'calorie': i.calorie,
+                'price': i.price,
+                'description': i.description,
+                'image': images
             })
-        print(items)
-        return JsonResponse({'items' : items}, status=status.HTTP_200_OK)
+        print(events, items)
+        return JsonResponse({'envets' : events, 'items': items}, status=status.HTTP_200_OK)

@@ -22,6 +22,10 @@ class Item(TimestampedModel):
         return self.name
 
 class Item_Img(TimestampedModel):
-    item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
+    item_id = models.ForeignKey(Item, related_name='itemimges', on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, unique=True)
+    photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d")
+
+class Event_Img(TimestampedModel):
     name = models.CharField(max_length=50, unique=True)
     photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d")
