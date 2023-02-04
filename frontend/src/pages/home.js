@@ -1,4 +1,5 @@
 import Header from "./component/header";
+import Menu from "./component/menu";
 import { Carousel } from "@mantine/carousel";
 import { Center, AspectRatio, Image, MediaQuery, Space } from "@mantine/core";
 
@@ -15,9 +16,25 @@ function Home() {
       <div>
         <Header />
         <div class="mt-10 ">
-          <Carousel sx={{ maxWidth: 1200 }} mx="auto" withIndicators={true}>
+          <Carousel
+            controlSize={72}
+            sx={{ maxWidth: 1200 }}
+            mx="auto"
+            withIndicators={true}
+          >
             {slides}
           </Carousel>
+        </div>
+      </div>
+      <div class="flex flex-col place-items-center mt-10 ">
+        <div class="w-[1200px] text-[30px] font-semibold  mb-10">
+          Today's Menu
+        </div>
+        <div class="w-[1200px] flex justify-between">
+          <Menu />
+          <Menu />
+          <Menu />
+          <Menu />
         </div>
       </div>
     </div>
