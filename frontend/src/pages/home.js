@@ -7,10 +7,11 @@ function Home() {
     <div class="bg-[#ECE4D7]">
       <div>
         <Header />
-        <div class="mt-10">
+        <div class="mt-10 w-1000 h-1000">
           <Center>
             <Carousel
-              withIndicators
+              slideSize="50%"
+              withIndicators={true}
               controlSize={72}
               breakpoints={[
                 { maxWidth: 1200, height: 678 },
@@ -20,13 +21,17 @@ function Home() {
             >
               <Carousel.Slide>
                 {/* <AspectRatio ratio={16 / 9}> */}
-
                 <Image fit="contain" src="/event3.jpg" />
-
                 {/* </AspectRatio> */}
               </Carousel.Slide>
-              <Carousel.Slide>2</Carousel.Slide>
-              <Carousel.Slide>3</Carousel.Slide>
+              <Carousel.Slide>
+                {" "}
+                {/* <Image fit="contain" src="/event3.jpg" /> */}
+              </Carousel.Slide>
+
+              <Carousel.Slide>
+                <Image fit="contain" src="/event3.jpg" />
+              </Carousel.Slide>
               {/* ...other slides */}
             </Carousel>{" "}
           </Center>
