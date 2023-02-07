@@ -6,19 +6,17 @@ import axios from "axios";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
 
-const images = ["/event4.jpg", "/event4.jpg", "/event5.jpg"];
+const images = ["/event4.jpg", "/event4.jpg", "/new_event.jpeg"];
 
 function Home() {
   const [imgurl, setimgurl] = useState({});
+
   useEffect(() => {
-    axios.get(backUrl + "/main/").then(
-      (res) => {
-        setimgurl(res.data);
-        console.log(imgurl);
-      },
-      [imgurl]
-    );
-  });
+    axios.get(backUrl + "/main/").then((res) => {
+      console.log("event", res.data.envets[0].image);
+      console.log("item", res.data.items);
+    });
+  }, []);
 
   const slides = images.map((url) => (
     <Carousel.Slide key={url}>
