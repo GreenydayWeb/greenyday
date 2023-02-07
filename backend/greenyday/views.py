@@ -5,12 +5,25 @@ from rest_framework.response import Response
 from .models import Item, Category, Item_Img, Event_Img
 from django.http import JsonResponse
 from rest_framework import status, generics, viewsets
-from .serializers import ItemSerializer
+from .serializers import ItemSerializer, ItemCreateSerializer, ItemImgSerializer, EventSerializer
 
 
 class ItemViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    permission_classes = [AllowAny]
+
+class ItemCreate(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemCreateSerializer
+    http_method_names = ['post', 'update']
+    # TODO 관리자 권한으로 변경해야함.
+    permission_classes = [AllowAny]
+
+class EventCreate(viewsets.ModelViewSet):
+    queryset = Event_Img.objects.all()
+    serializer_class = EventSerializer
+    # TODO 관리자 권한으로 변경해야함.
     permission_classes = [AllowAny]
 
 class MainList(generics.ListAPIView):
