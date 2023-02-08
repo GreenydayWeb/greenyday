@@ -22,7 +22,7 @@ function Header() {
       <nav class="flex flex-col place-items-center">
         {/* 맨 위 헤더 */}
         <div
-          class="w-4/6  my-7 flex 
+          class="w-4/6  my-12 flex 
         justify-between place-items-center"
         >
           <img class="hidden md:block md:h-10" src="/instagram.png" />
@@ -45,7 +45,7 @@ function Header() {
         <div class="w-4/6 ">
           <ul class=" md:flex md:justify-between  lg:place-items-center text-[25px] font-bold ">
             <li class="mr-3 group relative dropdown">
-              <a class="" href="/loginpage/login">
+              <a class="hover:underline " href="/loginpage/login">
                 About
               </a>
               <ul class="absolute hidden  group-hover:block">
@@ -57,19 +57,19 @@ function Header() {
               </ul>
             </li>
 
-            <li class="mr-3">
+            <li class="hover:underline  mr-3">
               <a href="/loginpage/login">Menu</a>
             </li>
 
-            <li class="mr-3">
+            <li class="hover:underline  mr-3">
               <a href="/loginpage/login">Nutrition</a>
             </li>
 
-            <li class="mr-3">
+            <li class="hover:underline  mr-3">
               <a href="/loginpage/login">Store</a>
             </li>
 
-            <li class="">
+            <li class="hover:underline ">
               <a href="/loginpage/login">Franchise</a>
             </li>
           </ul>
