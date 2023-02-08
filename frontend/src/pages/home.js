@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 
 function Home() {
   const [images, setimgurl] = useState([]);
+  const [menu, setmenu] = useState([]);
 
   useEffect(() => {
     axios.get(backUrl + "/main/").then((res) => {
@@ -25,9 +26,14 @@ function Home() {
         image.push(backUrl + url.image);
       });
       setimgurl(image);
-      console.log(res.data.items);
+      setmenu(res.data.items);
+      // console.log(res.data.items);
+
+      // console.log(res.data.items);
     });
   }, []);
+
+  console.log(menu);
 
   const slides = images.map((url) => (
     <Carousel.Slide key={url}>
@@ -53,13 +59,22 @@ function Home() {
         <div class="w-[1200px] text-[30px] font-semibold  mb-10">
           Today's Menu
         </div>
-        <div class="w-[1200px] flex justify-between ">
+        {/* <div class="md:w-[1200px] md:flex md:justify-between ">
           <Menu />
           <Menu />
           <Menu />
           <Menu />
+        </div> */}
+        <div class="md:w-[1200px] md:flex md:justify-between">
+          {menu.map((m) => {
+            return (
+              <div>
+                <Menu menu={m} />
+              </div>
+            );
+          })}
         </div>
-        <div class=" flex justify-between w-[1200px] my-[60px]">
+        <div class=" md:flex justify-between md:w-[1200px] md:my-[60px]">
           <div class="flex flex-col pt-[40px] place-items-center w-[380px]   h-[320px] rounded-[80px] shadow border-[#554407] border-[2px] ">
             <div class="text-[#554407] text-[30px] font-semibold">
               GREENY DAY’S
