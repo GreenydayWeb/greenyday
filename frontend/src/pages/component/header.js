@@ -22,19 +22,17 @@ function Header() {
       <nav class="flex flex-col place-items-center">
         {/* 맨 위 헤더 */}
         <div
-          class="w-4/6  flex 
+          class="w-4/6  my-7 flex 
         justify-between place-items-center"
         >
-          <img class="w-10 h-10" src="/instagram.png" />
+          <img class="hidden md:block md:h-10" src="/instagram.png" />
 
-          <div class=" lg:text-[100px] font-bold text-[#245A3A] text-[30px]">
-            GREENY DAY
-          </div>
+          <img class="w-140 h-12 pl-20" src="/LOGO.png" />
 
           {/* <img class="w-10 h-10" src={backUrl + imgurl} /> */}
 
-          <ul class="flex font-[300] text-[23px]">
-            <li class="mr-3">
+          <ul class="hidden md:block md:flex font-[300] text-[23px]">
+            <li class="mr-8">
               <a href="/loginpage/login">Login</a>
             </li>
             <li>
@@ -43,8 +41,9 @@ function Header() {
           </ul>
         </div>
         {/* 두 번째 헤더 */}
+
         <div class="w-4/6 ">
-          <ul class=" flex justify-between  place-items-center text-[25px] font-bold ">
+          <ul class=" md:flex md:justify-between  lg:place-items-center text-[25px] font-bold ">
             <li class="mr-3 group relative dropdown">
               <a class="" href="/loginpage/login">
                 About

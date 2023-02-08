@@ -6,15 +6,26 @@ import axios from "axios";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
 
-const images = ["/event4.jpg", "/event4.jpg", "/new_event.jpeg"];
+// <PostCardnew
+//                         key={content.id}
+//                         post={{
+//                           content,
+//                         }}
+//                       />
 
 function Home() {
-  const [imgurl, setimgurl] = useState({});
+  const [images, setimgurl] = useState([]);
 
   useEffect(() => {
     axios.get(backUrl + "/main/").then((res) => {
-      console.log("event", res.data.envets[0].image);
-      console.log("item", res.data.items);
+      const events = res.data.envets;
+      const image = [];
+
+      events.map((url) => {
+        image.push(backUrl + url.image);
+      });
+      setimgurl(image);
+      console.log(res.data.items);
     });
   }, []);
 
