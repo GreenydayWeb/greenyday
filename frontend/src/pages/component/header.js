@@ -43,22 +43,56 @@ function Header() {
         {/* 두 번째 헤더 */}
 
         <div class="w-4/6 ">
-          <ul class=" md:flex md:justify-between  lg:place-items-center text-[25px] font-bold ">
-            <li class="mr-3 group relative dropdown">
-              <a class="hover:underline " href="/loginpage/login">
+          <ul class=" md:flex md:justify-between  text-[25px] font-bold">
+            <li class="mr-3 group relative dropdown ">
+              <a class="mb-10 hover:underline  " href="/loginpage/login">
                 About
               </a>
-              <ul class="absolute hidden  group-hover:block">
-                <li class="">
+              <ul class="hidden  group-hover:block text-[20px]">
+                <li class="hover:text-[#245A3A]">
                   <a class="p" href="#">
-                    One
+                    회사 소개
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    메뉴 소개
                   </a>
                 </li>
               </ul>
             </li>
 
-            <li class="hover:underline  mr-3">
-              <a href="/loginpage/login">Menu</a>
+            <li class="mr-3 group box-border w-50 h-50 relative dropdown ">
+              <a class=" mb-10  hover:underline  " href="/loginpage/login">
+                Menu
+              </a>
+              <ul class="hidden  group-hover:block text-[20px] mb-2 ">
+                <li class="hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    Salad
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    Sandwich&Wrap
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    Greek yogyrt &Granola
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    Side&Drink
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    Lunch box
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="hover:underline  mr-3">

@@ -1,17 +1,11 @@
 import Header from "./component/header";
+import Footer from "./component/footer";
 import Menu from "./component/menu";
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
 import axios from "axios";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
-
-// <PostCardnew
-//                         key={content.id}
-//                         post={{
-//                           content,
-//                         }}
-//                       />
 
 function Home() {
   const [images, setimgurl] = useState([]);
@@ -91,12 +85,13 @@ function Home() {
           </div>
           <div>
             <img
-              class="w-[750px] h-[320px] rounded-[80px]"
+              class=" w-[750px] h-[320px] opacity-50 rounded-[80px] border-2  border-[#000000] border-opacity-100"
               src="/outside.png "
-            ></img>
+            />
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
