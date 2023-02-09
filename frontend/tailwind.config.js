@@ -9,6 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      zIndex: ["hover", "active"],
       fontFamily: { custom: ["ofelia - text"] },
     },
 

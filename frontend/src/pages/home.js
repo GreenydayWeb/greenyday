@@ -37,28 +37,28 @@ function Home() {
   return (
     <div class="bg-[#ECE4D7]">
       <div>
-        <Header />
-        <div class="mt-10 ">
-          <Carousel
-            controlSize={72}
-            sx={{ maxWidth: 1200 }}
-            mx="auto"
-            withIndicators={true}
-          >
-            {slides}
-          </Carousel>
+        <div class="">
+          <Header class="z-50" />
+        </div>
+
+        <div class="">
+          <div class="mt-10 ">
+            <Carousel
+              controlSize={72}
+              sx={{ maxWidth: 1200 }}
+              mx="auto"
+              withIndicators={true}
+            >
+              {slides}
+            </Carousel>
+          </div>
         </div>
       </div>
       <div class="flex flex-col place-items-center mt-10 ">
         <div class="w-[1200px] text-[30px] font-semibold  mb-10">
           Today's Menu
         </div>
-        {/* <div class="md:w-[1200px] md:flex md:justify-between ">
-          <Menu />
-          <Menu />
-          <Menu />
-          <Menu />
-        </div> */}
+
         <div class="md:w-[1200px] md:flex md:justify-between">
           {menu.map((m) => {
             return (

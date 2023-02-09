@@ -25,7 +25,9 @@ function Header() {
           class="w-4/6  my-12 flex 
         justify-between place-items-center"
         >
-          <img class="hidden md:block md:h-10" src="/instagram.png" />
+          <a href="https://www.instagram.com/greenyday_anseo/">
+            <img class="hidden md:block md:h-10" src="/instagram.png" />
+          </a>
 
           <img class="w-140 h-12 pl-20" src="/LOGO.png" />
 
@@ -42,14 +44,14 @@ function Header() {
         </div>
         {/* 두 번째 헤더 */}
 
-        <div class="w-4/6 ">
-          <ul class=" md:flex md:justify-between  text-[25px] font-bold">
-            <li class="mr-3 group relative dropdown ">
+        <div class="  w-4/6 ">
+          <ul class="relative md:flex md:justify-between  text-[25px] font-bold">
+            <li class=" hover:z-50 mr-3 group dropdown ">
               <a class="mb-10 hover:underline  " href="/loginpage/login">
                 About
               </a>
-              <ul class="hidden  group-hover:block text-[20px]">
-                <li class="hover:text-[#245A3A]">
+              <ul class=" absolute hidden group-hover:block hover:z-50 text-[20px]">
+                <li class="hover:text-[#245A3A] ">
                   <a class="p" href="#">
                     회사 소개
                   </a>
@@ -61,12 +63,11 @@ function Header() {
                 </li>
               </ul>
             </li>
-
-            <li class="mr-3 group box-border w-50 h-50 relative dropdown ">
+            <li class="relative hover:z-50  mr-3 group box-border w-100 h-50 relative dropdown ">
               <a class=" mb-10  hover:underline  " href="/loginpage/login">
                 Menu
               </a>
-              <ul class="hidden  group-hover:block text-[20px] mb-2 ">
+              <ul class="absolute hidden  group-hover:block text-[20px] mb-2 ">
                 <li class="hover:text-[#245A3A]">
                   <a class="p" href="#">
                     Salad
@@ -95,16 +96,53 @@ function Header() {
               </ul>
             </li>
 
-            <li class="hover:underline  mr-3">
-              <a href="/loginpage/login">Nutrition</a>
+            <li class="hover:z-50 w-200   relative mr-3 group box-border w-200 relative dropdown ">
+              <a class=" mb-10 hover:underline  " href="/loginpage/login">
+                Nutrition
+              </a>
+              <ul class="absolute hidden  group-hover:block text-[20px] mb-2 ">
+                <li class="hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    영양성분표
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    칼로리표
+                  </a>
+                </li>
+              </ul>
             </li>
 
-            <li class="hover:underline  mr-3">
-              <a href="/loginpage/login">Store</a>
+            <li class="hover:z-50  relative mr-3 group box-border w-50 h-50 relative dropdown ">
+              <a class=" mb-10  hover:underline  " href="/loginpage/login">
+                Store
+              </a>
+              <ul class=" absolute hidden  group-hover:block text-[20px] mb-2 ">
+                <li class="w-60 hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    매장찾기
+                  </a>
+                </li>
+              </ul>
             </li>
 
-            <li class="hover:underline ">
-              <a href="/loginpage/login">Franchise</a>
+            <li class="hover:z-50  relative mr-3 group box-border w-50 h-50 relative dropdown ">
+              <a class=" mb-10  hover:underline  " href="/loginpage/login">
+                Franchise
+              </a>
+              <ul class="absolute hidden  group-hover:block text-[20px] mb-2 ">
+                <li class="hover:text-[#245A3A]">
+                  <a class="p" href="#">
+                    가맹안내
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    가맹상담신청
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
