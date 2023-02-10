@@ -1,14 +1,14 @@
 import { backUrl } from "../../config/config";
 
-const Menu = ({}) => {
+const MenuRight = ({}) => {
   //   const imgurl = backUrl + menu.image;
   return (
-    <div class="w-full  bg-[#CE4D]">
-      <div class=" h-64 flex items-center">
+    <div class="w-[75rem] h-[15rem] bg-[#ECE4D7] mb-6">
+      <div class=" h-64 flex flex-row-reverse items-center">
         <img class="w-auto " src="/greenline.png"></img>
-        <img class="w-auto h-[23rem] " src="/menu1.png"></img>
-        <div>
-          <div class=" mb-2 text-[#245A3A] font-bold text-[28px]">
+        <img class="w-auto h-[20rem] " src="/menu1.png"></img>
+        <div class="grid justify-items-end ">
+          <div class=" mb-2 text-[#245A3A] font-bold text-[28px] ">
             닭가슴살샐러드
           </div>
           <div class=" mb-2  text-[20px]">
@@ -45,4 +45,4 @@ const Menu = ({}) => {
   );
 };
 
-export default Menu;
+export default MenuRight;
