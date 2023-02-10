@@ -1,6 +1,6 @@
 import Header from "./component/header";
 import Footer from "./component/footer";
-import Menu from "./component/menu";
+import MenuTo from "./component/menuto";
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
 import axios from "axios";
@@ -63,7 +63,7 @@ function Home() {
           {menu.map((m) => {
             return (
               <div>
-                <Menu menu={m} />
+                <MenuTo menu={m} />
               </div>
             );
           })}
