@@ -28,8 +28,9 @@ function Header() {
           <a href="https://www.instagram.com/greenyday_anseo/">
             <img class="hidden md:block md:h-10" src="/instagram.png" />
           </a>
-
-          <img class="w-140 h-12 pl-20" src="/LOGO.png" />
+          <a href="/home">
+            <img class="w-140 h-12 pl-20" src="/LOGO.png" />
+          </a>
 
           {/* <img class="w-10 h-10" src={backUrl + imgurl} /> */}
 
@@ -64,7 +65,7 @@ function Header() {
               </ul>
             </li>
             <li class="relative hover:z-50  mr-3 group box-border w-100 h-50 relative dropdown ">
-              <a class=" mb-10  hover:underline  " href="/loginpage/login">
+              <a class=" mb-10  hover:underline  " href="/menu">
                 Menu
               </a>
               <ul class="rounded-b w-[11rem] bg-[#ECE4D7] absolute hidden  group-hover:block text-[20px] mb-2  ">
