@@ -10,10 +10,14 @@ function Menu() {
       <div class="mt-7">
         <div class=" ">
           <div class="flex flex-col items-center">
-            <Menucompoleft></Menucompoleft>
-            <Menucomporight></Menucomporight>
-            <Menucompoleft></Menucompoleft>
-            <Menucomporight></Menucomporight>
+            {menu.map((m) => {
+              return (
+                <div>
+                  <Menucompoleft menu={m}></Menucompoleft>
+                  <Menucomporight menu={m}></Menucomporight>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
