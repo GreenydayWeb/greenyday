@@ -12,7 +12,7 @@ function Home() {
   const [menu, setmenu] = useState([]);
 
   useEffect(() => {
-    axios.get(backUrl + "/main/").then((res) => {
+    axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.envets;
       const image = [];
 
