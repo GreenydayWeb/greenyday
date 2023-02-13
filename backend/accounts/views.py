@@ -11,6 +11,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import SignupSerializer, LoginSerializer
 
 KAKAO_REST_API_KEY = "3ec9ad497bc0ec9335ae6a557b415c0a"
+# TODO 나중에 배포할 때 바꿔야함!
 KAKAO_REDIRECT_URI = "http://localhost:3000/oauth/callback/kakao/"
 
 
