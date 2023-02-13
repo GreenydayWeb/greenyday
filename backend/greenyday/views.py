@@ -55,5 +55,4 @@ class MainList(generics.ListAPIView):
                 'description': i.description,
                 'image': images
             })
-        print(events, items)
-        return JsonResponse({'envets' : events, 'items': items}, status=status.HTTP_200_OK)
+        return JsonResponse({'events' : events, 'items': items}, status=status.HTTP_200_OK)
