@@ -16,7 +16,7 @@ const Kakao = () => {
     mountCount++;
     setDidMount(true);
     axios
-        .get(`${backUrl}/accounts/login/kakao?code=${code}`,{
+        .get(`${backUrl}/api/accounts/login/kakao?code=${code}`,{
           params : {
             code : code
           }
