@@ -1,17 +1,17 @@
-from django.shortcuts import render
-from rest_framework.permissions import AllowAny, IsAdminUser
-from rest_framework.response import Response
-
+from rest_framework.permissions import AllowAny
 from .models import Item, Category, Item_Img, Event_Img
 from django.http import JsonResponse
 from rest_framework import status, generics, viewsets
-from .serializers import ItemSerializer, ItemCreateSerializer, ItemImgSerializer, EventSerializer
+from .serializers import ItemSerializer, ItemCreateSerializer, EventSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ItemViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     permission_classes = [AllowAny]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['category_id__name']
 
 class ItemCreate(viewsets.ModelViewSet):
     queryset = Item.objects.all()
