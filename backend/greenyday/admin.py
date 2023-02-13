@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Item, Item_Img, Category, Event_Img
+from .models import Item, Item_Img, Category, Event_Img, Nutrition
 
 
 @admin.register(Item)
@@ -31,3 +31,9 @@ class EventAdmin(admin.ModelAdmin):
 
     def photo_tag(self, img):
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
+
+@admin.register(Nutrition)
+class NutAdmin(admin.ModelAdmin):
+    list_display = ['id', 'item_id', 'protein', 'carbohydrate', 'fat']
+    list_display_links = ['item_id']
+

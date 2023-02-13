@@ -22,10 +22,16 @@ class Item(TimestampedModel):
         return self.name
 
 class Item_Img(TimestampedModel):
-    item_id = models.ForeignKey(Item, related_name='itemimges', on_delete=models.CASCADE, null=True, blank=True)
+    item_id = models.ForeignKey(Item, related_name='itemimges', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, unique=True)
     photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d", blank=True, null=True)
 
 class Event_Img(TimestampedModel):
     name = models.CharField(max_length=50, unique=True)
     photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d")
+
+class Nutrition(TimestampedModel):
+    item_id = models.ForeignKey(Item, related_name='nutritions', on_delete=models.CASCADE, blank=True, null=True)
+    protein = models.FloatField(default=0)
+    carbohydrate = models.FloatField(default=0)
+    fat = models.FloatField(default=0)

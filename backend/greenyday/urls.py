@@ -5,7 +5,7 @@ from . import views
 from .views import MainList
 
 router = DefaultRouter()
-router.register('item', views.ItemViewSet)
+router.register('items', views.ItemViewSet)
 
 menu = DefaultRouter()
 menu.register('adminmenu', views.ItemCreate)
