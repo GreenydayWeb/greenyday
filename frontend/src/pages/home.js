@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     axios.get(backUrl + "/api/main/").then((res) => {
-      const events = res.data.envets;
+      const events = res.data.events;
       const image = [];
 
       events.map((url) => {
@@ -21,13 +21,8 @@ function Home() {
       });
       setimgurl(image);
       setmenu(res.data.items);
-      // console.log(res.data.items);
-
-      // console.log(res.data.items);
     });
   }, []);
-
-  console.log(menu);
 
   const slides = images.map((url) => (
     <Carousel.Slide key={url}>
