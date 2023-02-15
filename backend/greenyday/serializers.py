@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import Item_Img, Category, Event_Img, Item, Nutrition
-
-
+from .models import Item_Img, Category, Event_Img, Item, Nutrition, Ingredient
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,6 +18,11 @@ class NutritionSerializer(serializers.ModelSerializer):
         model = Nutrition
         fields = ['protein', 'carbohydrate', 'fat']
 
+class IngredientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingredient
+        fields = ['name']
+
 class EventSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField(use_url=True)
     class Meta:
@@ -29,6 +32,7 @@ class EventSerializer(serializers.ModelSerializer):
 class ItemCreateSerializer(serializers.ModelSerializer):
     itemimges = ItemImgSerializer(many=True)
     nutritions = NutritionSerializer()
+    ingredients = IngredientSerializer(many=True)
     class Meta:
         model = Item
         fields = '__all__'
@@ -39,23 +43,27 @@ class ItemCreateSerializer(serializers.ModelSerializer):
         return response
 
     def create(self, validated_data):
-        print(validated_data)
         itemimges = validated_data.pop('itemimges')
         nutritions = validated_data.pop('nutritions')
+        ingredients = validated_data.pop('ingredients')
         item_instance = Item.objects.create(**validated_data)
+
         for img in itemimges:
             Item_Img.objects.create(item_id=item_instance, **img)
+
         Nutrition.objects.create(item_id=item_instance, **nutritions)
+        Ingredient.objects.create(item_id=item_instance, **ingredients)
         return item_instance
 
 
 
 class ItemSerializer(serializers.ModelSerializer):
     itemimges = ItemImgSerializer(many=True, read_only=True)
-    nutritions = NutritionSerializer(many=True, read_only=True)
+    nutritions = NutritionSerializer(read_only=True)
+    ingredients = IngredientSerializer(many=True, read_only=True)
     class Meta:
         model = Item
-        fields = ('pk', 'name', 'calorie', 'price', 'description', 'itemimges', 'nutritions')
+        fields = ('pk', 'name', 'calorie', 'price', 'description', 'itemimges', 'nutritions', 'ingredients')
     def to_representation(self, instance):
         response = super().to_representation(instance)
         response['category'] = CategorySerializer(instance.category_id).data
