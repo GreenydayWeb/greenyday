@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Item, Item_Img, Category, Event_Img, Nutrition
+from .models import Item, Item_Img, Category, Event_Img, Nutrition, Ingredient
 
 
 @admin.register(Item)
@@ -23,6 +23,7 @@ class ImgAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
+    list_display_links = ['id', 'name']
 
 @admin.register(Event_Img)
 class EventAdmin(admin.ModelAdmin):
@@ -36,4 +37,9 @@ class EventAdmin(admin.ModelAdmin):
 class NutAdmin(admin.ModelAdmin):
     list_display = ['id', 'item_id', 'protein', 'carbohydrate', 'fat']
     list_display_links = ['item_id']
+
+@admin.register(Ingredient)
+class IngAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    list_display_links = ['id', 'name']
 
