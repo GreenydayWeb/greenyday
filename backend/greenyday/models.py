@@ -18,20 +18,25 @@ class Item(TimestampedModel):
     price = models.IntegerField()
     description = models.TextField()
 
+
     def __str__(self):
         return self.name
 
 class Item_Img(TimestampedModel):
-    item_id = models.ForeignKey(Item, related_name='itemimges', on_delete=models.CASCADE, blank=True, null=True)
+    item_id = models.ForeignKey(Item, related_name='itemimges', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, unique=True)
-    photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d", blank=True, null=True)
+    photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d")
 
 class Event_Img(TimestampedModel):
     name = models.CharField(max_length=50, unique=True)
     photo = models.ImageField(upload_to="greenyday/menu/%Y/%m/%d")
 
-class Nutrition(TimestampedModel):
-    item_id = models.ForeignKey(Item, related_name='nutritions', on_delete=models.CASCADE, blank=True, null=True)
+class Nutrition(models.Model):
+    item_id = models.OneToOneField(Item, related_name='nutritions', on_delete=models.CASCADE)
     protein = models.FloatField(default=0)
     carbohydrate = models.FloatField(default=0)
     fat = models.FloatField(default=0)
+
+class Ingredient(models.Model):
+    item_id = models.ManyToManyField(Item, related_name='ingredients')
+    name = models.CharField(max_length=50, unique=True)
