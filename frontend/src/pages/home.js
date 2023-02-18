@@ -54,7 +54,7 @@ function Home() {
           Today's Menu
         </div>
 
-        <div class="md:w-[1200px] md:flex md:justify-between">
+        <div class="grid gap-14 lg:grid-cols-4 lg:grid-rows-1 grid-rows-2 grid-cols-2">
           {menu.map((m) => {
             return (
               <div>
@@ -63,8 +63,8 @@ function Home() {
             );
           })}
         </div>
-        <div class=" md:flex justify-between md:w-[1200px] md:my-[60px]">
-          <div class="flex flex-col pt-[40px] place-items-center w-[380px]   h-[320px] rounded-[80px] shadow border-[#554407] border-[2px] ">
+        <div class=" grid  grid-rows-1 grid-flow-col gap-4">
+          <div class=" col-span-1 flex flex-col pt-[40px] place-items-center  rounded-[80px] shadow border-[#554407] border-[2px] ">
             <div class="text-[#554407] text-[30px] font-semibold">
               GREENY DAY’S
             </div>
@@ -78,9 +78,9 @@ function Home() {
               둘러보기
             </div>
           </div>
-          <div>
+          <div class="col-span-2">
             <img
-              class=" w-[750px] h-[320px] opacity-50 rounded-[80px] border-2  border-[#000000] border-opacity-100"
+              class=" opacity-50 rounded-[80px] border-2  border-[#000000] border-opacity-100"
               src="/outside.png "
             />
           </div>
