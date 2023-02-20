@@ -149,7 +149,7 @@ function Header() {
           </ul>
         </div>
 
-        <div class="w-full border-b-4 group dropdown border-[#245A3A] z-50 "></div>
+        <div class="w-full border-b-4 relative dropdown border-[#245A3A] z-50 "></div>
       </nav>
     </header>
   );
