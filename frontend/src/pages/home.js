@@ -63,26 +63,12 @@ function Home() {
             );
           })}
         </div>
-        <div class="grid gap-14 lg:grid-cols-4 lg:grid-rows-1 grid-rows-1 grid-cols-1">
-          <div class=" lg:col-span-1 lg:row-span-1 flex flex-col pt-[40px] place-items-center  rounded-[80px] shadow border-[#554407] border-[2px] ">
-            <div class="text-[#554407] text-[30px] font-semibold">
-              GREENY DAY’S
-            </div>
-            <div class="text-[#554407] text-[30px] mb-[20px] font-semibold">
-              NUTRITION
-            </div>
-            <div class="  text-[25px] mb-[20px] font-semibold ">
-              그리니데이의 건강한 영양정보
-            </div>
-            <div class=" text-[#554407] text-[20px] mb-[10px] font-semibold">
-              둘러보기
-            </div>
-          </div>
-          <div class="lg:col-span-3 lg:row-span-1">
-            <img
-              class=" opacity-50 rounded-[80px] border-2  border-[#000000] border-opacity-100"
-              src="/outside.png "
-            />
+        <div class="w-[1200px] flex justify-between">
+          <a class="  w-1/3   ">
+            <img class=" " src="/nutriinfo.png " />
+          </a>
+          <div class=" ">
+            <img class=" " src="/outside.png " />
           </div>
         </div>
       </div>

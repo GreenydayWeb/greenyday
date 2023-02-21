@@ -45,13 +45,13 @@ function Header() {
         {/* 두 번째 헤더 */}
 
         <div class="  w-4/6 ">
-          <ul class="relative md:flex md:justify-between  group  text-[25px] font-bold">
-            <li class=" hover:z-50 mr-3 dropdown bg-[#ECE4D7]">
+          <ul class="relative md:flex md:justify-around  group  text-[25px] font-bold">
+            <li class=" hover:z-50 mr-3 dropdown bg-[#ECE4D7]  ml-10">
               <a class="mb-10 hover:text-[#245A3A]   " href="/loginpage/login">
                 About
               </a>
 
-              <ul class=" w-full h-[14rem] rounded-b bg-[#ECE4D7] absolute hidden group-hover:block group-hover:z-50 text-[17px]  ">
+              <ul class=" w-full h-[14rem] rounded-b bg-[#DDD2C2]  absolute hidden group-hover:block group-hover:z-50 text-[17px]  ">
                 <li class="hover:text-[#245A3A] ">
                   <a class="p" href="#">
                     회사 소개
@@ -69,7 +69,7 @@ function Header() {
               <a class=" mb-10  hover:text-[#245A3A]  " href="/menu">
                 Menu
               </a>
-              <ul class="rounded-b w-full h-[14rem] bg-[#ECE4D7] absolute hidden  group-hover:block group-hover:z-50 text-[17px]  mb-2  ">
+              <ul class="rounded-b w-full h-[14rem]bg-[#DDD2C2]  absolute hidden  group-hover:block group-hover:z-50 text-[17px]  mb-2  ">
                 <li class="hover:text-[#245A3A]">
                   <a class="p" href="#">
                     Salad
@@ -102,7 +102,7 @@ function Header() {
               <a class=" mb-10 hover:text-[#245A3A]  " href="/loginpage/login">
                 Nutrition
               </a>
-              <ul class="rounded-b w-full h-[14rem] bg-[#ECE4D7] absolute hidden  group-hover:block group-hover:z-50 text-[17px]  mb-2 ">
+              <ul class="rounded-b w-full h-[14rem] bg-[#DDD2C2]  absolute hidden  group-hover:block group-hover:z-50 text-[17px]  mb-2 ">
                 <li class="hover:text-[#245A3A]  ">
                   <a class="p" href="#">
                     영양성분표
@@ -120,7 +120,7 @@ function Header() {
               <a class=" mb-10 hover:text-[#245A3A]  " href="/loginpage/login">
                 Store
               </a>
-              <ul class=" rounded-b w-full h-[14rem] bg-[#ECE4D7] absolute hidden  group-hover:block group-hover:z-50  text-[17px]  mb-2 ">
+              <ul class=" rounded-b w-full h-[14rem] bg-[#DDD2C2]  absolute hidden  group-hover:block group-hover:z-50  text-[17px]  mb-2 ">
                 <li class="w-60 hover:text-[#245A3A] ">
                   <a class="p" href="#">
                     매장찾기
@@ -133,7 +133,7 @@ function Header() {
               <a class=" mb-10 hover:text-[#245A3A]  " href="/loginpage/login">
                 Franchise
               </a>
-              <ul class="rounded-b w-full h-[14rem] bg-[#ECE4D7] absolute hidden  group-hover:block group-hover:z-50  text-[17px] mb-2 ">
+              <ul class="rounded-b w-full h-[14rem] bg-[#DDD2C2] absolute hidden  group-hover:block group-hover:z-50  text-[17px] mb-2 ">
                 <li class="hover:text-[#245A3A]  ">
                   <a class="p" href="#">
                     가맹안내
@@ -149,7 +149,7 @@ function Header() {
           </ul>
         </div>
 
-        <div class="w-full border-b-4 relative dropdown border-[#245A3A] z-50 "></div>
+        <div class="w-full border-b-4 group-hover:block group-hover:z-50  border-[#245A3A]"></div>
       </nav>
     </header>
   );
