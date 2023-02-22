@@ -63,13 +63,13 @@ function Home() {
             );
           })}
         </div>
-        <div class="w-[1200px] flex justify-between">
-          <a class="  w-1/3   ">
-            <img class=" " src="/nutriinfo.png " />
+        <div class="w-[1200px] m-5 mt-24 flex justify-between">
+          <a href="/home">
+            <img class="hover:scale-105" src="/nutriinfo.png " />
           </a>
-          <div class=" ">
-            <img class=" " src="/outside.png " />
-          </div>
+          <a class=" ">
+            <img class="hover:scale-105" src="/outside.png " />
+          </a>
         </div>
       </div>
       <Footer />
