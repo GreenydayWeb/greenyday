@@ -38,5 +38,5 @@ class Nutrition(models.Model):
     fat = models.FloatField(default=0)
 
 class Ingredient(models.Model):
-    item_id = models.ManyToManyField(Item, related_name='ingredients')
-    name = models.CharField(max_length=50, unique=True)
+    item_id = models.OneToOneField(Item, related_name='ingredients', on_delete=models.CASCADE)
+    description = models.TextField()

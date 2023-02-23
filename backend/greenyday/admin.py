@@ -40,6 +40,6 @@ class NutAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredient)
 class IngAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
-    list_display_links = ['id', 'name']
+    list_display = ['id', 'description']
+    list_display_links = ['id', 'description']
 

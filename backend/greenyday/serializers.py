@@ -21,7 +21,7 @@ class NutritionSerializer(serializers.ModelSerializer):
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ['name']
+        fields = ['description']
 
 class EventSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField(use_url=True)
