@@ -60,7 +60,7 @@ class ItemCreateSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     itemimges = ItemImgSerializer(many=True, read_only=True)
     nutritions = NutritionSerializer(read_only=True)
-    ingredients = IngredientSerializer(many=True, read_only=True)
+    ingredients = IngredientSerializer(read_only=True)
     class Meta:
         model = Item
         fields = ('pk', 'name', 'calorie', 'price', 'description', 'itemimges', 'nutritions', 'ingredients')
