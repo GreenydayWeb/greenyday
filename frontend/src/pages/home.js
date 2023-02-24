@@ -65,10 +65,10 @@ function Home() {
         </div>
         <div class="w-[1200px] m-5 mt-24 flex justify-between">
           <a href="/home">
-            <img class="hover:scale-105" src="/nutriinfo.png " />
+            <img src="/nutriinfo.png " />
           </a>
-          <a class=" ">
-            <img class="hover:scale-105" src="/outside.png " />
+          <a class="/home ">
+            <img src="/outside.png " />
           </a>
         </div>
       </div>

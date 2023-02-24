@@ -5,7 +5,10 @@ const MenuTo = ({ menu }) => {
 
   return (
     <div class="flex flex-col place-items-center  max-w-[260px] h-[400px] rounded-[40px] shadow bg-[#CEC0AC] px-3">
-      <img class=" display:block object-scale-down " src={imgurl}></img>
+      <img
+        class=" display:block object-scale-down hover:scale-105 "
+        src={imgurl}
+      ></img>
       <div class="display:block  text-[#FEF5E9] text-[25px] mb-[10px]">
         {menu.name}
       </div>

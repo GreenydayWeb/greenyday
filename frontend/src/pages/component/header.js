@@ -50,53 +50,52 @@ function Header() {
         {/* 네비게이션바 */}
         <div class="w-3/4  group relative">
           <div class=" absolute top-0 left-0  w-full h-[14rem] hidden group-hover:block bg-[#ECE4D7] z-30 "></div>
-          <ul class=" md:flex md:justify-around  text-[25px] font-bold mx-10">
-            <li class=" dropdown z-40">
-              <a class="mb-10 hover:text-[#245A3A]    " href="/loginpage/login">
+          <ul class=" md:flex md:justify-around  text-[25px] font-bold   ">
+            <li class=" dropdown z-40  ">
+              <a class="mb-10 hover:text-[#245A3A]" href="/loginpage/login">
                 About
               </a>
-              <div class="flex">
-                <ul class="  rounded-b  absolute hidden group-hover:block text-[17px] group-hover:z-50  ">
-                  <li class="hover:text-[#245A3A] ">
-                    <a class="p" href="#">
-                      회사 소개
-                    </a>
-                  </li>
-                  <li class="hover:text-[#245A3A]  mb-2">
-                    <a class="p" href="#">
-                      메뉴 소개
-                    </a>
-                  </li>
-                </ul>
-              </div>
+
+              <ul class="  absolute hidden group-hover:block text-[17px] group-hover:z-50 mt-3  ">
+                <li class="hover:text-[#245A3A] ">
+                  <a class="p" href="#">
+                    회사 소개
+                  </a>
+                </li>
+                <li class="hover:text-[#245A3A]  mt-1">
+                  <a class="p" href="#">
+                    메뉴 소개
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class=" dropdown z-40">
               <a class="  hover:text-[#245A3A]  " href="/menu">
                 Menu
               </a>
-              <ul class="  absolute hidden  group-hover:block group-hover:z-50 text-[17px]    ">
+              <ul class="  absolute hidden  group-hover:block group-hover:z-50 text-[17px]  mt-3  ">
                 <li class="hover:text-[#245A3A]">
                   <a class="p" href="#">
                     Salad
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A]">
+                <li class="hover:text-[#245A3A] mt-1">
                   <a class="p" href="#">
                     Sandwich&Wrap
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A] ">
+                <li class="hover:text-[#245A3A]  mt-1">
                   <a class="p" href="#">
                     Greek yogyrt&Granola
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A] ">
+                <li class="hover:text-[#245A3A]  mt-1">
                   <a class="p" href="#">
                     Side&Drink
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A]   mb-2">
+                <li class="hover:text-[#245A3A] mt-1">
                   <a class="p" href="#">
                     Lunch box
                   </a>
@@ -108,13 +107,13 @@ function Header() {
               <a class=" hover:text-[#245A3A]  " href="/loginpage/login">
                 Nutrition
               </a>
-              <ul class=" absolute hidden  group-hover:block group-hover:z-50 text-[17px]  ">
+              <ul class=" absolute hidden  group-hover:block group-hover:z-50 text-[17px] mt-3 ">
                 <li class="hover:text-[#245A3A]  ">
                   <a class="p" href="#">
                     영양성분표
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A]  mb-2">
+                <li class="hover:text-[#245A3A]  mt-1">
                   <a class="p" href="#">
                     칼로리표
                   </a>
@@ -123,11 +122,11 @@ function Header() {
             </li>
 
             <li class="dropdown z-40">
-              <a class=" mb-10 hover:text-[#245A3A]  " href="/loginpage/login">
+              <a class="  hover:text-[#245A3A]" href="/loginpage/login">
                 Store
               </a>
-              <ul class=" absolute hidden  group-hover:block group-hover:z-50  text-[17px] ">
-                <li class="w-60 hover:text-[#245A3A] ">
+              <ul class=" absolute hidden  group-hover:block group-hover:z-50  text-[17px] mt-3">
+                <li class=" hover:text-[#245A3A] ">
                   <a class="p" href="#">
                     매장찾기
                   </a>
@@ -139,13 +138,13 @@ function Header() {
               <a class=" mb-10 hover:text-[#245A3A]  " href="/loginpage/login">
                 Franchise
               </a>
-              <ul class="absolute hidden  group-hover:block group-hover:z-50  text-[17px] ">
+              <ul class="absolute hidden  group-hover:block group-hover:z-50  text-[17px] mt-3">
                 <li class="hover:text-[#245A3A]  ">
                   <a class="p" href="#">
                     가맹안내
                   </a>
                 </li>
-                <li class="hover:text-[#245A3A] ">
+                <li class="hover:text-[#245A3A] mt-1 ">
                   <a class="p" href="#">
                     가맹상담신청
                   </a>
