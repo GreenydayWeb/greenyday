@@ -15,7 +15,6 @@ const fontStyle = {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -26,32 +25,10 @@ const Login = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
-      <div
-        type="primary"
-        onClick={showModal}
-        style={{
-          fontSize: "32px",
-          fontWeight: "400",
-          color: "rgba(0, 0, 0, 1)",
-          fontFamily: "sansneo_light",
-        }}
-      >
-        로그인
-      </div>
-      <Modal
-        title={
+      <div>
+        {
           <Text
             style={{
               fontSize: 44,
@@ -63,11 +40,6 @@ const Login = () => {
             로그인
           </Text>
         }
-        footer={null}
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
         <div
           style={{
             fontSize: 16,
@@ -157,7 +129,7 @@ const Login = () => {
             </Col>
           </Row>
         </Form>
-      </Modal>
+      </div>
     </>
   );
 };
