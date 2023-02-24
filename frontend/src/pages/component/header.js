@@ -25,19 +25,22 @@ function Header() {
         justify-between place-items-center"
         >
           <a href="https://www.instagram.com/greenyday_anseo/">
-            <img class="hidden md:block md:h-10" src="/instagram.png" />
+            <img
+              class="hidden md:block md:h-10 hover:scale-105"
+              src="/instagram.png"
+            />
           </a>
           <a href="/home">
-            <img class="w-140 h-12 pl-20" src="/LOGO.png" />
+            <img class="w-140 h-12 pl-20 " src="/LOGO.png" />
           </a>
 
           {/* <img class="w-10 h-10" src={backUrl + imgurl} /> */}
 
           <ul class="hidden md:block md:flex font-[300] text-[23px]">
-            <li class="mr-8">
+            <li class="mr-8 hover:scale-105">
               <a href="/loginpage/login">Login</a>
             </li>
-            <li>
+            <li class="hover:scale-105">
               <a href="/loginpage/signup">Sign up</a>
             </li>
           </ul>
