@@ -28,18 +28,7 @@ const Login = () => {
   return (
     <>
       <div>
-        {
-          <Text
-            style={{
-              fontSize: 44,
-              fontWeight: 700,
-              fontFamily: "sansneo_light",
-              color: "rgba(96, 96, 96, 1)",
-            }}
-          >
-            로그인
-          </Text>
-        }
+        {}
         <div
           style={{
             fontSize: 16,
