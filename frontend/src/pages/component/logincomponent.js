@@ -41,6 +41,8 @@ const LoginComponent = () => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           style={{
+            height: "400px",
+            width: "450px",
             padding: "20px",
             borderRadius: "40px",
             background: "rgba(206, 192, 172, 1)",
@@ -64,6 +66,7 @@ const LoginComponent = () => {
               style={{
                 borderRadius: "15px",
                 background: "rgba(251, 255, 250, 1)",
+                height: "40px",
               }}
               placeholder="e-mail"
             />
@@ -82,6 +85,7 @@ const LoginComponent = () => {
               style={{
                 borderRadius: "15px",
                 background: "rgba(251, 255, 250, 1)",
+                height: "40px",
               }}
               placeholder="password"
             />

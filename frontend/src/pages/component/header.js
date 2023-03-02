@@ -1,4 +1,4 @@
-import LOGIN from "../loginpage/login";
+import LOGIN from "./logincomponent";
 import SIGNUP from "../loginpage/signup";
 
 import axios from "axios";
