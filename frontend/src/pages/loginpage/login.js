@@ -9,11 +9,11 @@ const Login = () => {
       <div class="flex items-center justify-center bg-[#ECE4D7] h-screen ">
         <div class="bg-[#FEF5E9] w-full ">
           <div class="flex justify-between items-center">
-            <div class="w-[60px] h-[500px] bg-[#245A3A]"></div>
-            <div class="max-w-full ">
+            <div class="w-[60px] h-[600px] bg-[#245A3A]"></div>
+            <div class=" ">
               <img src="/LOGO.png"></img>
             </div>
-            <div class="mr-[50px]">
+            <div class="mr-[150px]">
               <LoginComponent></LoginComponent>
             </div>
           </div>

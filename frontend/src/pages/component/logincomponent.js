@@ -41,11 +41,12 @@ const LoginComponent = () => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           style={{
-            height: "400px",
-            width: "450px",
+            height: "500px",
+            width: "550px",
             padding: "20px",
             borderRadius: "40px",
             background: "rgba(206, 192, 172, 1)",
+            alignContent: "center",
           }}
         >
           <Form.Item
@@ -66,7 +67,7 @@ const LoginComponent = () => {
               style={{
                 borderRadius: "15px",
                 background: "rgba(251, 255, 250, 1)",
-                height: "40px",
+                height: "45px",
               }}
               placeholder="e-mail"
             />
@@ -85,7 +86,7 @@ const LoginComponent = () => {
               style={{
                 borderRadius: "15px",
                 background: "rgba(251, 255, 250, 1)",
-                height: "40px",
+                height: "45px",
               }}
               placeholder="password"
             />
@@ -99,7 +100,7 @@ const LoginComponent = () => {
                   htmlType="submit"
                   style={{
                     width: "100%",
-                    height: "40px",
+                    height: "45px",
                     borderRadius: "15px",
                     backgroundColor: "rgba(236, 228, 215, 1)",
                   }}
