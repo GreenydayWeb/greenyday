@@ -90,9 +90,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'greenyday',
-        'USER': 'donghyeok',
+        'USER': 'admin',
         'PASSWORD': 'qwer1234',
-        'HOST': '119.196.17.152',
+        'HOST': 'test-greenyday.ckrbknt8mrnk.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
