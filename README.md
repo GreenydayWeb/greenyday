@@ -18,7 +18,8 @@
 > npm install flowbite flowbite-react --save
 > npm i react-carousel-minimal
 > npm install embla-carousel-react --save
-```
+> ```
+
 ### back
 
 > ```bash
