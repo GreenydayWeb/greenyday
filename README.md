@@ -2,42 +2,35 @@
 ## 설치 파일
 ### front
 > ```bash
-npm i next-redux-wrapper
-npm i redux-devtools-extension
-npm install
-npm i next
-npm add next react react-dom
-npm i axios
-npm add antd
-npm install redux react-redux redux-promise redux-thunk --save
-npm i react
-npm i immer
-npm i redux-saga
-npm install -D tailwindcss postcss autoprefixer
-npm install tw-elements
-npm install flowbite flowbite-react --save
-npm i react-carousel-minimal
-npm install embla-carousel-react --save
+> npm i next-redux-wrapper
+> npm i redux-devtools-extension
+> npm install
+> npm i next
+> npm add next react react-dom
+> npm i axios
+> npm add antd
+> npm install redux react-redux redux-promise redux-thunk --save
+> npm i react
+> npm i immer
+> npm i redux-saga
+> npm install -D tailwindcss postcss autoprefixer
+> npm install tw-elements
+> npm install flowbite flowbite-react --save
+> npm i react-carousel-minimal
+> npm install embla-carousel-react --save
 ```
 
 ### back
 > ```bash
-python -m venv myvenv
-
-source myvenv/bin/activate
-
-cd greenyday
-cd backend
-
-pip install -r requirements.txt
-
-python manage.py makemigrations
-
-python manage.py migrate
-
-python manage.py createsuperuser
-
-python manage.py runserver
+> python -m venv myvenv
+> source myvenv/bin/activate
+> cd greenyday
+> cd backend
+> pip install -r requirements.txt
+> python manage.py makemigrations
+> python manage.py migrate
+> python manage.py createsuperuser
+> python manage.py runserver
 ```
 ## ***Backend End-points*** 
 > Resource modeling
