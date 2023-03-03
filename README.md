@@ -16,7 +16,7 @@
 > npm install -D tailwindcss postcss autoprefixer
 > npm install tw-elements
 > npm install flowbite flowbite-react --save
-> npm i react-carousel-minimal
+> npm install @mantine/core @mantine/hooks @mantine/carousel
 > npm install embla-carousel-react --save
 > ```
 
