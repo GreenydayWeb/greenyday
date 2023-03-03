@@ -19,7 +19,6 @@
 > npm i react-carousel-minimal
 > npm install embla-carousel-react --save
 ```
-
 ### back
 
 > ```bash
@@ -32,7 +31,7 @@
 > python manage.py migrate
 > python manage.py createsuperuser
 > python manage.py runserver
-```
+> ```
 ## ***Backend End-points*** 
 > Resource modeling
 > 
