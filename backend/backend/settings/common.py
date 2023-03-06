@@ -27,7 +27,7 @@ SECRET_KEY = 'ye_ppfz*x4#6+u)_yja=1g**ogouxqn8d_he1p2ijn=na8$b(#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*",]
 
 
 # Application definition
@@ -46,9 +46,11 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
+    'storages',
     # local apps
     'greenyday',
     'accounts',
+    's3',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +142,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+        STATIC_DIR,
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -185,4 +191,12 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
+STATICFILES_STORAGE = 'backend.storages.StaticStorage'
+MEDIAFILES_LOCATION = 'media'
+STATICFILES_LOCATION = 'static'
+AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
 
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'greenyday'
