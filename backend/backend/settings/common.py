@@ -141,14 +141,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
         STATIC_DIR,
 ]
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
@@ -194,9 +192,14 @@ SIMPLE_JWT = {
 DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
 STATICFILES_STORAGE = 'backend.storages.StaticStorage'
 MEDIAFILES_LOCATION = 'media'
+AWS_STORAGE_BUCKET_NAME = 'greenyday'
 STATICFILES_LOCATION = 'static'
 AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
-
+AWS_REGION = 'ap-northeast-2'
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_SECRET_ACCESS_KEY = 'oJjyeVEEWilvFmfH6OduwRcL6IYohChCk53AQZ5d'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
-AWS_STORAGE_BUCKET_NAME = 'greenyday'
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
