@@ -25,10 +25,10 @@ class IngredientInline(admin.TabularInline):
 class ItemAdmin(admin.ModelAdmin):
     inlines = (NutritionInline, IngredientInline, ImageInline)
 
-    list_display = ['id', 'name', 'category_id', 'get_item_img']
+    list_display = ['id', 'name', 'category_id', 'item_img']
     list_display_links = ['name']
 
-    def get_item_img(self, obj):
+    def item_img(self, obj):
         img = obj.itemimges.first()
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
@@ -36,9 +36,9 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Event_Img)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'photo_tag']
+    list_display = ['id', 'name', 'event_img']
     list_display_links = ['name']
 
-    def photo_tag(self, img):
+    def event_img(self, img):
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
