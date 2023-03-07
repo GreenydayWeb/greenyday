@@ -4,26 +4,32 @@ from django.utils.safestring import mark_safe
 from .models import Item, Item_Img, Category, Event_Img, Nutrition, Ingredient
 
 
+class ImageInline(admin.TabularInline):
+    model = Item_Img
+    fk_name = 'item_id'
+    can_delete = False
+
+class NutritionInline(admin.TabularInline):
+    model = Nutrition
+    fk_name = 'item_id'
+    can_delete = False
+
+class IngredientInline(admin.TabularInline):
+    model = Ingredient
+    fk_name = 'item_id'
+    can_delete = False
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'category_id', 'calorie', 'price', 'description']
+    inlines = (NutritionInline, IngredientInline, ImageInline)
+
+    list_display = ['id', 'name', 'category_id', 'get_item_img']
     list_display_links = ['name']
 
+    def get_item_img(self, obj):
+        url = obj.item_img_set.image.url if obj.item_img_set else None
+        return mark_safe(f"<img src={url} style='width: 100px;' />")
 
 
-
-@admin.register(Item_Img)
-class ImgAdmin(admin.ModelAdmin):
-    list_display = ['id', 'item_id', 'name', 'photo_tag']
-    list_display_links = ['name']
-
-    def photo_tag(self, img):
-        return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
-    list_display_links = ['id', 'name']
 
 @admin.register(Event_Img)
 class EventAdmin(admin.ModelAdmin):
@@ -32,14 +38,4 @@ class EventAdmin(admin.ModelAdmin):
 
     def photo_tag(self, img):
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
-
-@admin.register(Nutrition)
-class NutAdmin(admin.ModelAdmin):
-    list_display = ['id', 'item_id', 'protein', 'carbohydrate', 'fat']
-    list_display_links = ['item_id']
-
-@admin.register(Ingredient)
-class IngAdmin(admin.ModelAdmin):
-    list_display = ['id', 'description']
-    list_display_links = ['id', 'description']
 
