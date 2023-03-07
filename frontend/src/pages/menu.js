@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import wrapper from "../store/configureStore";
 import { useDispatch, useSelector } from "react-redux";
-import { LOG_IN_REQUEST } from "../../reducers/menu";
+// import { LOG_IN_REQUEST } from "../../reducers/menu";
 
 function Menu() {
   const [menu, setMenu] = useState([]);

@@ -43,7 +43,7 @@ const LoginComponent = () => {
           style={{
             height: "500px",
             width: "550px",
-            padding: "20px",
+            padding: "70px 20px 20px 20px",
             borderRadius: "40px",
             background: "rgba(206, 192, 172, 1)",
             alignContent: "center",
@@ -100,7 +100,7 @@ const LoginComponent = () => {
                   htmlType="submit"
                   style={{
                     width: "100%",
-                    height: "45px",
+                    height: "60px",
                     borderRadius: "15px",
                     backgroundColor: "rgba(236, 228, 215, 1)",
                   }}

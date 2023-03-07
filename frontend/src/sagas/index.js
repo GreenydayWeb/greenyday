@@ -8,5 +8,5 @@ import menuSaga from "./menu";
 // axios.defaults.withCredentials = true;
 
 export default function* rootSaga() {
-  yield all([fork(userSaga), frok(menuSaga)]);
+  yield all([fork(userSaga)]);
 }

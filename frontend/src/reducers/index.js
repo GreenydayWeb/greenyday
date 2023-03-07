@@ -13,7 +13,6 @@ const rootReducer = (state, action) => {
     default: {
       const combinedReducer = combineReducers({
         user,
-        menu,
       });
       return combinedReducer(state, action);
     }

@@ -28,10 +28,10 @@ function* GetMenu(action) {
   }
 }
 
-function* getMenu() {
+function* watchMenu() {
   yield takeLatest(REQUEST_GET_MENU, GetMenu);
 }
 
 export default function* userSaga() {
-  yield all([fork(getMenu)]);
+  yield all([fork(watchMenu)]);
 }
