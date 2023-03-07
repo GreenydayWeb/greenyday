@@ -40,3 +40,4 @@ class Nutrition(models.Model):
 class Ingredient(models.Model):
     item_id = models.OneToOneField(Item, related_name='ingredients', on_delete=models.CASCADE)
     description = models.TextField()
+

@@ -189,17 +189,23 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
-STATICFILES_STORAGE = 'backend.storages.StaticStorage'
-MEDIAFILES_LOCATION = 'media'
-AWS_STORAGE_BUCKET_NAME = 'greenyday'
-STATICFILES_LOCATION = 'static'
-AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
-AWS_REGION = 'ap-northeast-2'
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_SECRET_ACCESS_KEY = 'oJjyeVEEWilvFmfH6OduwRcL6IYohChCk53AQZ5d'
-AWS_S3_SIGNATURE_VERSION = 's3v4'
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+if DEBUG:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+else:
+    DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
+    STATICFILES_STORAGE = 'backend.storages.StaticStorage'
+    MEDIAFILES_LOCATION = 'media'
+    AWS_STORAGE_BUCKET_NAME = 'greenyday'
+    STATICFILES_LOCATION = 'static'
+    AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
+    AWS_REGION = 'ap-northeast-2'
+    AWS_QUERYSTRING_AUTH = False
+    AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    AWS_SECRET_ACCESS_KEY = 'oJjyeVEEWilvFmfH6OduwRcL6IYohChCk53AQZ5d'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
