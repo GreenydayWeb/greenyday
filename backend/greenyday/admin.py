@@ -29,7 +29,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display_links = ['name']
 
     def get_item_img(self, obj):
-        img = obj.item_img_set.first()
+        img = obj.itemimges.first()
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
 
