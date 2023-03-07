@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'greenyday',
     'accounts',
     's3',
+    'store',
 ]
 
 MIDDLEWARE = [
@@ -194,10 +195,7 @@ if DEBUG:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
-    CORS_ORIGIN_WHITELIST = [
-        'http://localhost:3000',
-        'http://192.168.0.6:3000',
-    ]
+
 else:
     DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
     STATICFILES_STORAGE = 'backend.storages.StaticStorage'
@@ -213,8 +211,5 @@ else:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    CORS_ORIGIN_WHITELIST = [
-        'http://greenyday.co.kr',
-        'https://greenyday.co.kr',
-        'http://192.168.0.6:3000',
-    ]
+
+CORS_ORIGIN_ALLOW_ALL = True
