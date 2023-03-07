@@ -26,8 +26,8 @@ class ItemAdmin(admin.ModelAdmin):
     list_display_links = ['name']
 
     def get_item_img(self, obj):
-        url = obj.item_img_set.image.url if obj.item_img_set else None
-        return mark_safe(f"<img src={url} style='width: 100px;' />")
+        img = obj.item_img_set.first()
+        return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
 
 

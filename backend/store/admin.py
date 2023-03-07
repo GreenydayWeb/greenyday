@@ -15,7 +15,7 @@ class FranchiseAdmin(admin.ModelAdmin):
     list_display_links = ['name']
 
     def get_franchise_img(self, obj):
-        url = obj.franchise_img_set.image.url if obj.franchise_img_set else None
-        return mark_safe(f"<img src={url} style='width: 100px;' />")
+        img = obj.franchise_img_set.first()
+        return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
     get_franchise_img.short_description = '이미지'
