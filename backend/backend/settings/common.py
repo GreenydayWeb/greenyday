@@ -200,7 +200,7 @@ else:
     DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
     STATICFILES_STORAGE = 'backend.storages.StaticStorage'
     MEDIAFILES_LOCATION = 'media'
-    AWS_STORAGE_BUCKET_NAME = 'greenyday'
+    AWS_STORAGE_BUCKET_NAME = 'greenyday.co.kr'
     STATICFILES_LOCATION = 'static'
     AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
     AWS_REGION = 'ap-northeast-2'
