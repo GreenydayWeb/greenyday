@@ -8,16 +8,19 @@ class ImageInline(admin.TabularInline):
     model = Item_Img
     fk_name = 'item_id'
     can_delete = False
+    extra = 1
 
 class NutritionInline(admin.TabularInline):
     model = Nutrition
     fk_name = 'item_id'
     can_delete = False
+    extra = 1
 
 class IngredientInline(admin.TabularInline):
     model = Ingredient
     fk_name = 'item_id'
     can_delete = False
+    extra = 1
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     inlines = (NutritionInline, IngredientInline, ImageInline)
