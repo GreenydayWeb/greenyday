@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
-const { Title, Text } = Typography;
 import { Divider, Form, Input, Row, Col, DatePicker, Image } from "antd";
+const { Text } = Typography;
 
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",

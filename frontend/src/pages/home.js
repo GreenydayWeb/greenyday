@@ -1,17 +1,25 @@
 import Header from "./component/header";
 import Footer from "./component/footer";
-import MenuTo from "./component/menuto";
+import MenuTo from "../component/menuto";
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
 import axios from "axios";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
+import { LOAD_POSTS_REQUEST } from "../reducers/user";
+import { useSelector, useDispatch } from "react-redux";
 
 function Home() {
+  const dispatch = useDispatch();
   const [images, setimgurl] = useState([]);
-  const [menu, setmenu] = useState([]);
+  const [mainPosts, setmenu] = useState([]);
+  // const { mainPosts } = useSelector((state) => state.user);
 
   useEffect(() => {
+    // dispatch({
+    //   type: LOAD_POSTS_REQUEST,
+    // });
+
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;
       const image = [];
@@ -55,13 +63,9 @@ function Home() {
         </div>
 
         <div class="grid gap-14 lg:grid-cols-4 lg:grid-rows-1 grid-rows-2 grid-cols-2">
-          {menu.map((m) => {
-            return (
-              <div>
-                <MenuTo menu={m} />
-              </div>
-            );
-          })}
+          {mainPosts.map((m, index) => (
+            <MenuTo menus={m} key={index} />
+          ))}
         </div>
         <div class="w-[1200px] m-5 mt-24 flex justify-between">
           <a href="/home">

@@ -1,5 +1,4 @@
 import Header from "./component/header";
-import Menu from "./component/menuleft";
 
 function About() {
   return (

@@ -1,4 +1,4 @@
-import { backUrl } from "../../config/config";
+import { backUrl } from "../config/config";
 
 const MenuLeft = ({ menu }) => {
   return (

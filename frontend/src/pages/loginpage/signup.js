@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
-const { Text } = Typography;
+
 import { Image, Divider, Form, Input, Row, Col, DatePicker } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequestAction } from "../../reducers/user";
@@ -9,6 +9,7 @@ import { ON_CHANGE_EMAILOVERLAP } from "../../reducers/user";
 import { ON_CHANGE_NICKNAMEOVERLAP } from "../../reducers/user";
 import Router from "next/router";
 import { frontUrl } from "../../config/config";
+const { Text } = Typography;
 
 const fontStyle = {
   color: "rgba(48, 47, 47, 1)",

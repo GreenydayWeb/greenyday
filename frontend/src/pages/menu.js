@@ -1,5 +1,5 @@
 import Header from "./component/header";
-import Menucompoleft from "./component/menuleft";
+import Menucompoleft from "../component/menuleft";
 import Menucomporight from "./component/menuright";
 import Footer from "./component/footer";
 import { backUrl } from "../config/config";

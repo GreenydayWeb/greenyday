@@ -1,4 +1,4 @@
-import { frontUrl } from "../config/config";
+import { frontUrl } from "./config/config";
 
 const CLIENT_ID = "3ec9ad497bc0ec9335ae6a557b415c0a";
 const REDIRECT_URI = frontUrl + "/oauth/callback/kakao/";
