@@ -1,7 +1,6 @@
 import { backUrl } from "../../config/config";
 
 const MenuLeft = ({ menu }) => {
-  console.log(menu);
   return (
     <div class="w-[75rem] h-[15rem] bg-[#ECE4D7] mb-6">
       <div class=" h-64 flex items-center">

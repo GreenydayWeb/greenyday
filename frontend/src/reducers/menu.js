@@ -29,19 +29,7 @@ export const initialState = {
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 
-// 중복 실패
-export const SIGN_UP_FAIL_EMAILOVERLAP = "SIGN_UP_FAIL_EMAILOVERLAP";
-export const SIGN_UP_FAIL_NICKNAMEOVERLAP = "SIGN_UP_FAIL_NICKNAMEOVERLAP";
 
-export const ON_CHANGE_EMAILOVERLAP = "ON_CHANGE_EMAILOVERLAP";
-export const ON_CHANGE_NICKNAMEOVERLAP = "ON_CHANGE_NICKNAMEOVERLAP";
-
-export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
-
-export const signupRequestAction = (data) => ({
-  type: SIGN_UP_REQUEST,
-  data,
-});
 
 const reducer = (state = initialState, action) =>
   produce(state, (draft) => {

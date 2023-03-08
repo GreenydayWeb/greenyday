@@ -1,76 +1,98 @@
 import Header from "./component/header";
+import Menu from "./component/menuleft";
 
 function About() {
   return (
-    <div>
-      <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <svg
-            class="fill-current h-8 w-8 mr-2"
-            width="54"
-            height="54"
-            viewBox="0 0 54 54"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
-          <span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
-        </div>
-        <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-            <svg
-              class="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <ul class=" flex justify-between  place-items-center text-[25px] font-bold ">
-            <li class="mr-3 group relative dropdown">
-              <a class="" href="/loginpage/login">
-                About
-              </a>
-              <ul class="absolute hidden  group-hover:block">
-                <li class="">
-                  <a class="p" href="#">
-                    One
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="mr-3">
-              <a class="hover:text-[30px]" href="/loginpage/login">
-                Menu
-              </a>
-            </li>
-
-            <li class="mr-3">
-              <a href="/loginpage/login">Nutrition</a>
-            </li>
-
-            <li class="mr-3">
-              <a href="/loginpage/login">Store</a>
-            </li>
-
-            <li class="">
-              <a href="/loginpage/login">Franchise</a>
-            </li>
-          </ul>
+    <div class="bg-[#ECE4D7]">
+      <Header></Header>
+      <div class="">
+        <img src="/about_img.jpg"></img>
+        <div class="flex flex-col place-items-center">
+          <div class="text-[60px] text-[#245A3A] font-bold items-center">
+            ABOUT GRENNYDAY
+          </div>
           <div>
-            <a
-              href="#"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-            >
-              Download
-            </a>
+            <p class="text-center text-[30px] leading-loose ">
+              그리니데이는 당신의 하루에 건강함을 채워 줄 샐러드 전문
+              브랜드입니다. <br /> 신선하고 깨끗한 식재료 사용을 원칙으로,
+              건강한 음식을 제공하고 있습니다. <br /> 지속가능한 라이프스타일을
+              위해, 가볍고 건강한 일상을 위해, <br /> 당신의 오늘을 건강하게
+              채워줄, 든든한 하루 Have a GRENNYDAY
+            </p>
           </div>
         </div>
-      </nav>
+      </div>
+      {/* 그리니데이메뉴 */}
+      <div class="flex flex-col place-items-center">
+        <div class="text-[60px] text-[#245A3A] font-bold items-center">
+          GREENY DAY MENU
+        </div>
+      </div>
+      {/* 메뉴 컴포넌트 시작*/}
+      <div class=" grid grid-cols-8 bg-[#FEF5E9]">
+        <div class="col-start-1 w-[60px] h-full bg-[#245A3A]"></div>
+        <div class="col-start-2 col-span-4">
+          <div class="flex items-center ">
+            <img class="w-auto h-[20rem] " src="/menu1.png"></img>
+            <div>
+              <div class=" mb-2 text-[#245A3A] font-bold text-[28px]">
+                닭가슴살 샐러드
+              </div>
+              <div class=" mb-2  text-[20px]">샐러드</div>
+              <div class=" mb-3  text-[17px]">맛있는샐러드</div>
+
+              <div class="flex  font-semibold text-[20px]">
+                <div class="mr-4">
+                  <div>칼로리</div>
+                </div>
+                <div class=" mr-4 flex flex-col items-center">
+                  <div>탄수화물</div>
+                </div>
+                <div class=" mr-4 flex flex-col items-center">
+                  <div>단백질</div>
+                </div>
+                <div class=" flex flex-col items-center">
+                  <div>지방</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 메뉴 컴포넌트 끝*/}
+
+      {/* 메뉴 컴포넌트 시작 */}
+      <div class=" grid grid-cols-8 bg-[#FEF5E9]">
+        <div class="col-start-1 w-[60px] h-full bg-[#245A3A]"></div>
+        <div class="col-start-2 col-span-4">
+          <div class="flex items-center ">
+            <img class="w-auto h-[20rem] " src="/menu1.png"></img>
+            <div>
+              <div class=" mb-2 text-[#245A3A] font-bold text-[28px]">
+                닭가슴살 샐러드
+              </div>
+              <div class=" mb-2  text-[20px]">샐러드</div>
+              <div class=" mb-3  text-[17px]">맛있는샐러드</div>
+
+              <div class="flex  font-semibold text-[20px]">
+                <div class="mr-4">
+                  <div>칼로리</div>
+                </div>
+                <div class=" mr-4 flex flex-col items-center">
+                  <div>탄수화물</div>
+                </div>
+                <div class=" mr-4 flex flex-col items-center">
+                  <div>단백질</div>
+                </div>
+                <div class=" flex flex-col items-center">
+                  <div>지방</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 메뉴 컴포넌트 끝 */}
     </div>
   );
 }
