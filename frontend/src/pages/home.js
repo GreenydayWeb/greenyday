@@ -38,7 +38,7 @@ function Home() {
     </Carousel.Slide>
   ));
   return (
-    <div class="bg-[#ECE4D7]">
+    <div class="bg-[#ECE4D7] overflow-x-hidden">
       <div>
         <div class="">
           <Header class="z-50" />
@@ -70,7 +70,7 @@ function Home() {
 
         <div class=" grid lg:grid-cols-2 lg:grid-rows-1 gap-20 grid-rows-2 grid-cols-1 mt-10">
           <a href="/home">
-            <div class=" grid w-[500px] h-[267px] border-2 border-[#554407] rounded-[45px] p-3">
+            <div class=" grid lg:w-[500px] w-[400px] h-[267px] border-2 border-[#554407] rounded-[45px] p-3">
               <div class=" place-self-center ">
                 <div class="flex flex-col items-center">
                   <p class="text-[#554407] text-[30px] font-bold text-center pb-3 ">

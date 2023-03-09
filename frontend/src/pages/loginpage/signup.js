@@ -5,14 +5,14 @@ import Header from "../component/header";
 
 const Signup = () => {
   return (
-    <div class="bg-[#ECE4D7]">
+    <div class="bg-[#ECE4D7] overflow-x-hidden">
       <Header></Header>
       <div class=" flex flex-col items-center ">
         <h1 class=" text-[50px] mt-[40px] mb-[20px]">Sign up</h1>
         <p class="text-[#797878] text-[20px] mb-[30px]">
           샐러드를 주문하려면 회원가입이 필요해요!
         </p>
-        <div class="w-[560px]  p-[55px] rounded-[60px]">
+        <div class="w-[500px]  p-[55px] rounded-[60px]">
           <SignupComponent></SignupComponent>
         </div>
       </div>

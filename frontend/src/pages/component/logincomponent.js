@@ -42,7 +42,7 @@ const LoginComponent = () => {
           autoComplete="off"
           style={{
             height: "500px",
-            width: "550px",
+            // width: "400px",
             padding: "70px 20px 20px 20px",
             borderRadius: "40px",
             background: "rgba(206, 192, 172, 1)",
