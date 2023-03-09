@@ -2,7 +2,7 @@ import { backUrl } from "../config/config";
 
 const MenuLeft = ({ menu }) => {
   return (
-    <div class="w-[75rem] h-[15rem] bg-[#ECE4D7] mb-6">
+    <div class="lg:w-[75rem] lg:h-[15rem] bg-[#ECE4D7] mb-6">
       <div class=" h-64 flex items-center">
         <img class="w-auto " src="/greenline.png"></img>
         <img class="w-auto h-[20rem] " src={menu.itemimges[0].photo}></img>

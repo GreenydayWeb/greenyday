@@ -111,7 +111,7 @@ const mockdata = [
   },
 ];
 
-function TestPage() {
+function HeaderComponent() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
@@ -200,8 +200,13 @@ function TestPage() {
           </Group>
           <Space w="xl" />
           <Group className={classes.hiddenMobile} ml="xl">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="default">
+              <a href="/loginpage/login">Log in</a>
+            </Button>
+            <Button variant="default">
+              {" "}
+              <a href="/loginpage/signup">Sign up</a>
+            </Button>
           </Group>
 
           <Burger
@@ -221,29 +226,36 @@ function TestPage() {
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
-        <ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">
+        <ScrollArea
+          h={`calc(100vh - ${rem(60)})`}
+          mx="-md"
+          style={{ backgroundColor: "rgba(236, 228, 215, 1)" }}
+        >
           <Divider
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
-
-          <a href="#" className={classes.link}>
-            About
+          <a href="/about" className={classes.link}>
+            <Text fz="xl"> About</Text>
           </a>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Menu
+                <a href="/about" className={classes.link}>
+                  <Text fz="xl">Menu</Text>
+                </a>
               </Box>
               <IconChevronDown size={16} color={theme.fn.primaryColor()} />
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
+
           <a href="#" className={classes.link}>
-            Nutrition
+            <Text fz="xl"> Nutrition</Text>
           </a>
+
           <a href="#" className={classes.link}>
-            Store
+            <Text fz="xl"> Store</Text>
           </a>
 
           <Divider
@@ -253,11 +265,11 @@ function TestPage() {
 
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="default">Sign up</Button>
           </Group>
         </ScrollArea>
       </Drawer>
     </Box>
   );
 }
-export default TestPage;
+export default HeaderComponent;

@@ -3,7 +3,7 @@ import { backUrl } from "../../config/config";
 const MenuRight = ({}) => {
   //   const imgurl = backUrl + menu.image;
   return (
-    <div class="w-[75rem] h-[15rem] bg-[#ECE4D7] mb-6">
+    <div class="lg:w-[80rem] lg:h-[15rem]  bg-[#ECE4D7] mb-6">
       <div class=" h-64 flex flex-row-reverse items-center">
         <img class="w-auto " src="/greenline.png"></img>
         <img class="w-auto h-[20rem] " src="/menu1.png"></img>

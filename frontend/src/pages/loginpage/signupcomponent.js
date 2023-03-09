@@ -325,6 +325,8 @@ const SignupComponent = () => {
                 <p class="text-[#404016] text-[15px] ">이용약관 동의(필수)</p>{" "}
               </Checkbox>
             </Form.Item>
+
+            
             <Form.Item
               name="agreement"
               valuePropName="checked2"
