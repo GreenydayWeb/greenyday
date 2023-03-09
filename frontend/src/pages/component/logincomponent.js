@@ -120,12 +120,34 @@ const LoginComponent = () => {
                 <KakaoLogin></KakaoLogin>
               </Col>
               <Col type="flex" align="middle">
-                <Text
-                  fontSize="14px"
-                  style={{ color: "rgba(116, 116, 116, 1)" }}
-                >
-                  아이디 찾기/ 패스워드 찾기/ 그리니데이 회원가입
-                </Text>
+                <Row justify="center">
+                  <a class="" href="/home">
+                    <Text
+                      fontSize="14px"
+                      style={{ color: "rgba(116, 116, 116, 1)" }}
+                    >
+                      아이디 찾기 &nbsp;
+                    </Text>
+                  </a>
+                  <p style={{ color: "rgba(116, 116, 116, 1)" }}>/</p>
+                  <a class="" href="/home">
+                    <Text
+                      fontSize="14px"
+                      style={{ color: "rgba(116, 116, 116, 1)" }}
+                    >
+                      &nbsp;비밀번호 찾기 &nbsp;
+                    </Text>
+                  </a>
+                  <p style={{ color: "rgba(116, 116, 116, 1)" }}>/</p>
+                  <a class="" href="/home">
+                    <Text
+                      fontSize="14px"
+                      style={{ color: "rgba(116, 116, 116, 1)" }}
+                    >
+                      &nbsp;회원가입{" "}
+                    </Text>
+                  </a>
+                </Row>
               </Col>
             </Col>
           </Row>

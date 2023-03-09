@@ -67,12 +67,24 @@ function Home() {
             <MenuTo menus={m} key={index} />
           ))}
         </div>
-        <div class="w-[1200px] m-5 mt-24 flex justify-between">
+
+        <div class=" grid lg:grid-cols-2 lg:grid-rows-1 gap-20 grid-rows-2 grid-cols-1 mt-10">
           <a href="/home">
-            <img src="/nutriinfo.png " />
+            <div class=" grid w-[500px] h-[267px] border-2 border-[#554407] rounded-[45px] p-3">
+              <div class=" place-self-center ">
+                <div class="flex flex-col items-center">
+                  <p class="text-[#554407] text-[30px] font-bold text-center pb-3 ">
+                    GREENY DAY’S <br />
+                    NUTRITION
+                  </p>
+                  <p class=" pb-3 text-[20px]">그리니데이의 건강한 영양정보</p>
+                  <p class="text-[#554407] text-[20px] font-bold"> 둘러보기</p>
+                </div>
+              </div>
+            </div>
           </a>
-          <a class="/home ">
-            <img src="/outside.png " />
+          <a href="/about ">
+            <img class=" w-[500px] h-[267px] " src="/outside.png " />
           </a>
         </div>
       </div>

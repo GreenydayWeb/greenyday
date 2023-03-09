@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Typography } from "antd";
-import { Button, Modal } from "antd";
+
 import LoginComponent from "../component/logincomponent";
+import Header from "../component/header";
 
 const Login = () => {
   return (
     <div>
+      <Header></Header>
       <div class="flex items-center justify-center bg-[#ECE4D7] h-screen ">
         <div class="bg-[#FEF5E9] w-full ">
           <div class="flex justify-between items-center">
