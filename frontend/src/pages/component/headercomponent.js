@@ -174,7 +174,7 @@ function HeaderComponent() {
                 style={{ backgroundColor: "rgba(236, 228, 215, 1)" }}
               >
                 <Group position="apart" px="md">
-                  <Text fw={500}>Menus</Text>
+                  <Text fw={500}>Menu</Text>
                   <Anchor href="#" fz="xs">
                     View all
                   </Anchor>
@@ -241,7 +241,7 @@ function HeaderComponent() {
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                <a href="/about" className={classes.link}>
+                <a href="/menu" className={classes.link}>
                   <Text fz="xl">Menu</Text>
                 </a>
               </Box>
@@ -264,8 +264,13 @@ function HeaderComponent() {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button variant="default">Sign up</Button>
+            <Button variant="default">
+              <a href="/loginpage/login">Log in</a>
+            </Button>
+            <Button variant="default">
+              {" "}
+              <a href="/loginpage/signup">Sign up</a>
+            </Button>
           </Group>
         </ScrollArea>
       </Drawer>
