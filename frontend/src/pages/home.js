@@ -1,6 +1,6 @@
-import Header from "./component/header";
-import Footer from "./component/footer";
-import MenuTo from "../component/menuto";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import MenuTo from "../components/menuto";
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
 import axios from "axios";
@@ -19,6 +19,7 @@ function Home() {
     // dispatch({
     //   type: LOAD_POSTS_REQUEST,
     // });
+    console.log(backUrl);
 
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;

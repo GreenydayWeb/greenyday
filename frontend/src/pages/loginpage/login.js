@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import LoginComponent from "../component/logincomponent";
-import Header from "../component/header";
+import LoginComponent from "../../components/logincomponent";
+import Header from "../../components/header";
 
 const Login = () => {
   return (

@@ -1,17 +1,18 @@
-import Header from "./component/header";
+import Header from "../components/header";
 
 function About() {
   return (
     <div class="bg-[#ECE4D7]">
       <Header></Header>
+      <div class="w-full h-[70px] lg:hidden bg-[#ECE4D7]"></div>
       <div class="">
-        <img src="/about_img.jpg"></img>
+        <img class="w-full h-[500px] " src="/about_img.jpg"></img>
         <div class="flex flex-col place-items-center">
           <div class="text-[60px] text-[#245A3A] font-bold items-center">
             ABOUT GRENNYDAY
           </div>
           <div>
-            <p class="text-center text-[30px] leading-loose ">
+            <p class="text-center lg:text-[30px] leading-loose ">
               그리니데이는 당신의 하루에 건강함을 채워 줄 샐러드 전문
               브랜드입니다. <br /> 신선하고 깨끗한 식재료 사용을 원칙으로,
               건강한 음식을 제공하고 있습니다. <br /> 지속가능한 라이프스타일을

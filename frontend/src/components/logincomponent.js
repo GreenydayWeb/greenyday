@@ -3,8 +3,8 @@ import { Typography } from "antd";
 import { Button, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Divider, Form, Input, Row, Col } from "antd";
-import { LOG_IN_REQUEST } from "../../reducers/user";
-import KakaoLogin from "../kakaologin";
+import { LOG_IN_REQUEST } from "../reducers/user";
+import KakaoLogin from "../pages/kakaologin";
 
 const { Text } = Typography;
 const fontStyle = {
@@ -139,7 +139,7 @@ const LoginComponent = () => {
                     </Text>
                   </a>
                   <p style={{ color: "rgba(116, 116, 116, 1)" }}>/</p>
-                  <a class="" href="/home">
+                  <a class="/signup" href="/home">
                     <Text
                       fontSize="14px"
                       style={{ color: "rgba(116, 116, 116, 1)" }}

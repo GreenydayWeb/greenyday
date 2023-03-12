@@ -1,7 +1,7 @@
-import Header from "./component/header";
-import Menucompoleft from "../component/menuleft";
-import Menucomporight from "./component/menuright";
-import Footer from "./component/footer";
+import Header from "../components/header";
+import Menucompoleft from "../components/menuleft";
+import Menucomporight from "../components/menuright";
+import Footer from "../components/footer";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -49,7 +49,5 @@ function Menu() {
     </div>
   );
 }
-
-// export const getServerSideProps = wrapper.getServerSideProps((context) => {});
 
 export default Menu;
