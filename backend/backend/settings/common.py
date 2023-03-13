@@ -186,31 +186,17 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+# static 파일이 저장될 디렉토리 경로
+STATIC_ROOT = '/var/www/grdays.com/static/'
 
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage' # Local, 즉 DEBUG=True 일 경우 pipeline 사용
+# static 파일이 위치할 디렉토리 경로
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_URL = '/static/'
 
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# media 파일이 저장될 디렉토리 경로
+MEDIA_ROOT = '/var/www/grdays.com/media/'
 
-else:
-    # AWS Setting
-    AWS_REGION = 'ap-northeast-2'
-    AWS_STORAGE_BUCKET_NAME = 'greenyday.co.kr'
-    AWS_QUERYSTRING_AUTH = False
-    AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
-    AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RYMLOZ3XW'
-    AWS_SECRET_ACCESS_KEY = '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'
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-    # Static Setting
-    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    STATICFILES_STORAGE = 'backend.storages.StaticStorage'
-    STATICFILES_LOCATION = 'static'
-
-    #Media Setting
-    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
-    MEDIAFILES_LOCATION = 'media'
+# media 파일이 위치할 디렉토리 경로
+MEDIA_URL = '/media/'
