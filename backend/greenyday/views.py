@@ -5,6 +5,8 @@ from rest_framework import status, generics, viewsets
 from .serializers import ItemSerializer, ItemCreateSerializer, EventSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
+def test(request):
+    return JsonResponse({'message' : 'hi'}, status=status.HTTP_200_OK)
 
 class ItemViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Item.objects.all()

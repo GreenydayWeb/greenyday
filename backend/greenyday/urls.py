@@ -13,6 +13,7 @@ menu.register('adminmenu', views.ItemCreate)
 event = DefaultRouter()
 event.register('adminevent', views.EventCreate)
 urlpatterns = [
+    path('test/', views.test, name='test'),
     path('', include(router.urls)),
     path('', include(menu.urls)),
     path('', include(event.urls)),

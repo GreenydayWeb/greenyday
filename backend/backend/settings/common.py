@@ -142,13 +142,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-        STATIC_DIR,
-]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
@@ -191,24 +185,32 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 if DEBUG:
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage' # Local, 즉 DEBUG=True 일 경우 pipeline 사용
+
     MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 else:
-    DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
-    STATICFILES_STORAGE = 'backend.storages.StaticStorage'
-    MEDIAFILES_LOCATION = 'media'
-    AWS_STORAGE_BUCKET_NAME = 'greenyday.co.kr'
-    STATICFILES_LOCATION = 'static'
-    AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RS7K2Y6XB'
+    # AWS Setting
     AWS_REGION = 'ap-northeast-2'
+    AWS_STORAGE_BUCKET_NAME = 'greenyday.co.kr'
     AWS_QUERYSTRING_AUTH = False
     AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
+    AWS_ACCESS_KEY_ID = 'AKIATE4FXQ5RYMLOZ3XW'
+    AWS_SECRET_ACCESS_KEY = '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'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_SECRET_ACCESS_KEY = 'oJjyeVEEWilvFmfH6OduwRcL6IYohChCk53AQZ5d'
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
-    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-CORS_ORIGIN_ALLOW_ALL = True
+
+    # Static Setting
+    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    STATICFILES_STORAGE = 'backend.storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+
+    #Media Setting
+    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
