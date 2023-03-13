@@ -1,4 +1,4 @@
-import { KAKAO_AUTH_URL } from "../pages/oauth";
+import { KAKAO_AUTH_URL } from "../oauth";
 import { frontUrl } from "../config/config";
 
 function kakaologin() {

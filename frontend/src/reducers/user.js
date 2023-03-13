@@ -23,6 +23,12 @@ export const initialState = {
   emailOverLap: false,
   nicknameOverLap: false,
   nickname: false,
+
+  mainPosts: [],
+
+  loadPostsLoading: false,
+  loadPostsDone: false,
+  loadPostsError: null,
 };
 
 //회원가입 action
@@ -37,6 +43,10 @@ export const ON_CHANGE_EMAILOVERLAP = "ON_CHANGE_EMAILOVERLAP";
 export const ON_CHANGE_NICKNAMEOVERLAP = "ON_CHANGE_NICKNAMEOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
+
+export const LOAD_POSTS_REQUEST = "LOAD_POSTS_REQUEST";
+export const LOAD_POSTS_SUCCESS = "LOAD_POSTS_SUCCESS";
+export const LOAD_POSTS_FAILURE = "LOAD_POSTS_FAILURE";
 
 export const signupRequestAction = (data) => ({
   type: SIGN_UP_REQUEST,
@@ -66,6 +76,23 @@ const reducer = (state = initialState, action) =>
 
       case ON_CHANGE_NICKNAMEOVERLAP:
         draft.nicknameOverLap = false;
+        break;
+
+      case LOAD_POSTS_REQUEST:
+        draft.loadPostsLoading = true;
+        draft.loadPostsDone = false;
+        draft.loadPostsError = null;
+        break;
+
+      case LOAD_POSTS_SUCCESS:
+        draft.loadPostsLoading = false;
+        draft.loadPostsDone = true;
+        draft.mainPosts = draft.mainPosts.concat(action.data);
+        break;
+
+      case LOAD_POSTS_FAILURE:
+        draft.loadPostsLoading = false;
+        draft.loadPostsError = action.error;
         break;
 
       default:

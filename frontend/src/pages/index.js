@@ -1,5 +1,5 @@
 import wrapper from "../store/configureStore";
-import HEAD from "../pages/component/header";
+import HEAD from "../components/header";
 import { Image } from "antd";
 
 function Home() {

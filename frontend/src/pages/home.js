@@ -1,17 +1,26 @@
-import Header from "./component/header";
-import Footer from "./component/footer";
-import MenuTo from "./component/menuto";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import MenuTo from "../components/menuto";
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
 import axios from "axios";
 import { backUrl } from "../config/config";
 import { useState, useEffect } from "react";
+import { LOAD_POSTS_REQUEST } from "../reducers/user";
+import { useSelector, useDispatch } from "react-redux";
 
 function Home() {
+  const dispatch = useDispatch();
   const [images, setimgurl] = useState([]);
-  const [menu, setmenu] = useState([]);
+  const [mainPosts, setmenu] = useState([]);
+  // const { mainPosts } = useSelector((state) => state.user);
 
   useEffect(() => {
+    // dispatch({
+    //   type: LOAD_POSTS_REQUEST,
+    // });
+    console.log(backUrl);
+
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;
       const image = [];
@@ -30,7 +39,7 @@ function Home() {
     </Carousel.Slide>
   ));
   return (
-    <div class="bg-[#ECE4D7]">
+    <div class="bg-[#ECE4D7] overflow-x-hidden">
       <div>
         <div class="">
           <Header class="z-50" />
@@ -55,20 +64,28 @@ function Home() {
         </div>
 
         <div class="grid gap-14 lg:grid-cols-4 lg:grid-rows-1 grid-rows-2 grid-cols-2">
-          {menu.map((m) => {
-            return (
-              <div>
-                <MenuTo menu={m} />
-              </div>
-            );
-          })}
+          {mainPosts.map((m, index) => (
+            <MenuTo menus={m} key={index} />
+          ))}
         </div>
-        <div class="w-[1200px] m-5 mt-24 flex justify-between">
+
+        <div class=" grid lg:grid-cols-2 lg:grid-rows-1 gap-20 grid-rows-2 grid-cols-1 mt-10">
           <a href="/home">
-            <img src="/nutriinfo.png " />
+            <div class=" grid lg:w-[500px] w-[400px] h-[267px] border-2 border-[#554407] rounded-[45px] p-3">
+              <div class=" place-self-center ">
+                <div class="flex flex-col items-center">
+                  <p class="text-[#554407] text-[30px] font-bold text-center pb-3 ">
+                    GREENY DAY’S <br />
+                    NUTRITION
+                  </p>
+                  <p class=" pb-3 text-[20px]">그리니데이의 건강한 영양정보</p>
+                  <p class="text-[#554407] text-[20px] font-bold"> 둘러보기</p>
+                </div>
+              </div>
+            </div>
           </a>
-          <a class="/home ">
-            <img src="/outside.png " />
+          <a href="/about ">
+            <img class=" w-[500px] h-[267px] " src="/outside.png " />
           </a>
         </div>
       </div>
