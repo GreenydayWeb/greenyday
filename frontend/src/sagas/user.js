@@ -17,11 +17,11 @@ import {
 
 //회원가입 saga
 function signUpAPI(data) {
-  console.log(data);
   return axios.post(backUrl + "/accounts/signup/", data);
 }
 
 function* SignUp(action) {
+  console.log("start");
   try {
     const result = yield call(signUpAPI, action.data);
     console.log("access", result.data);
@@ -29,6 +29,7 @@ function* SignUp(action) {
       type: SIGN_UP_SUCCESS,
     });
   } catch (err) {
+    console.log("err", err.response);
     const errObject = err.response.data;
     console.log(errObject);
     for (var value in errObject) {

@@ -51,6 +51,7 @@ const SignupComponent = () => {
   };
 
   useEffect(() => {
+    console.log(signUpDone);
     if (signUpDone) {
       Router.push(frontUrl + "/loginpage/login");
     }
@@ -278,7 +279,7 @@ const SignupComponent = () => {
               ]}
             >
               <Input
-                placeholder="000-000-000"
+                placeholder="010********"
                 style={{ borderRadius: "19px" }}
               />
             </Form.Item>
@@ -311,7 +312,7 @@ const SignupComponent = () => {
             <Divider />
             <Form.Item
               name="agreement"
-              valuePropName="checked1"
+              valuePropName="checked"
               rules={[
                 {
                   validator: (_, value) =>
@@ -326,31 +327,9 @@ const SignupComponent = () => {
               </Checkbox>
             </Form.Item>
 
-            
-            <Form.Item
-              name="agreement"
-              valuePropName="checked2"
-              rules={[
-                {
-                  validator: (_, value) =>
-                    value
-                      ? Promise.resolve()
-                      : Promise.reject(new Error("이용약관에 동의 해주세요!")),
-                },
-              ]}
-            >
+            <Form.Item name="agreement2" valuePropName="checked2">
               <Checkbox class="">
-                <p class="text-[#404016] text-[15px] ">
-                  개인정보 수집 및 이용동의 (필수)
-                </p>{" "}
-              </Checkbox>
-            </Form.Item>
-
-            <Form.Item name="agreement" valuePropName="checked3">
-              <Checkbox class="">
-                <p class="text-[#404016] text-[15px] ">
-                  마케팅 정보 수신 선택 동의 (선택)
-                </p>{" "}
+                <p class="text-[#404016] text-[15px] ">이용약관 동의(선택)</p>{" "}
               </Checkbox>
             </Form.Item>
 
