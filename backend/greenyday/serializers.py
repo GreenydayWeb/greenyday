@@ -13,6 +13,7 @@ class ItemImgSerializer(serializers.ModelSerializer):
         model = Item_Img
         fields = '__all__'
 
+
 class NutritionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Nutrition
@@ -58,13 +59,17 @@ class ItemCreateSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    itemimges = ItemImgSerializer(many=True, read_only=True)
     nutritions = NutritionSerializer(read_only=True)
     ingredients = IngredientSerializer(read_only=True)
     class Meta:
         model = Item
-        fields = ('pk', 'name', 'calorie', 'price', 'description', 'itemimges', 'nutritions', 'ingredients')
+        fields = ('pk', 'name', 'calorie', 'price', 'description', 'nutritions', 'ingredients')
     def to_representation(self, instance):
         response = super().to_representation(instance)
+        img = list()
+        for image in instance.itemimges.all():
+            data = {"photo" : image.photo.url}
+            img.append(data)
+        response['itemimges'] = img
         response['category'] = CategorySerializer(instance.category_id).data
         return response

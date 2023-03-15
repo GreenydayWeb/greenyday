@@ -32,6 +32,11 @@ class ItemAdmin(admin.ModelAdmin):
         img = obj.itemimges.first()
         return mark_safe(f"<img src={img.photo.url} style='width: 100px;' />")
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_displat = '__all__'
+    list_displat_links = ['name']
+
 
 
 @admin.register(Event_Img)
