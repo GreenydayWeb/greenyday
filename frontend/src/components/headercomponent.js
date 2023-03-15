@@ -16,12 +16,11 @@ import {
   Collapse,
   ScrollArea,
   rem,
-  MantineProvider,
   Space,
 } from "@mantine/core";
 
 import { useDisclosure } from "@mantine/hooks";
-import { MantineLogo } from "@mantine/ds";
+import Link from "next/link";
 import { IconChevronDown } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
@@ -96,18 +95,28 @@ const useStyles = createStyles((theme) => ({
 const mockdata = [
   {
     title: "Salad",
+    links: "/menu/",
+    items: "샐러드",
   },
   {
     title: "Sandwich & Wrap",
+    links: "/menu/",
+    items: "샌드위치",
   },
   {
     title: "Greek yogyrt & Granola",
+    links: "/menu/",
+    items: "그릭요거트",
   },
   {
     title: "Side & Drink",
+    links: "/menu/",
+    items: "사이드",
   },
   {
     title: "Lunch box",
+    links: "/menu/",
+    items: "런치박스",
   },
 ];
 
@@ -121,9 +130,11 @@ function HeaderComponent() {
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group noWrap align="flex-start">
         <div>
-          <Text size="sm" fw={500}>
-            {item.title}
-          </Text>
+          <Link href={item.links + item.items}>
+            <Text size="sm" fw={500}>
+              {item.title}
+            </Text>
+          </Link>
           <Text size="xs" color="dimmed">
             {item.description}
           </Text>
@@ -156,7 +167,7 @@ function HeaderComponent() {
               withinPortal
             >
               <HoverCard.Target>
-                <a href="/menu" className={classes.link}>
+                <a href="/menu/샐러드" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       <Text fz="xl">Menu</Text>
@@ -241,9 +252,9 @@ function HeaderComponent() {
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                <a href="/menu" className={classes.link}>
+                <Link href="/menu/샐러드" className={classes.link}>
                   <Text fz="xl">Menu</Text>
-                </a>
+                </Link>
               </Box>
               <IconChevronDown size={16} color={theme.fn.primaryColor()} />
             </Center>

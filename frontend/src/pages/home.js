@@ -16,11 +16,6 @@ function Home() {
   // const { mainPosts } = useSelector((state) => state.user);
 
   useEffect(() => {
-    // dispatch({
-    //   type: LOAD_POSTS_REQUEST,
-    // });
-    console.log(backUrl);
-
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;
       const image = [];
@@ -30,6 +25,7 @@ function Home() {
       });
       setimgurl(image);
       setmenu(res.data.items);
+      console.log(res.data);
     });
   }, []);
 
