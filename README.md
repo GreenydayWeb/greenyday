@@ -18,6 +18,7 @@
 > npm install flowbite flowbite-react --save
 > npm install @mantine/core @mantine/hooks @mantine/carousel
 > npm install embla-carousel-react --save
+> npm install --save-dev eslint
 > ```
 
 ### back
