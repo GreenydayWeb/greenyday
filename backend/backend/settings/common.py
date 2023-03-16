@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'greenyday',
     'accounts',
     's3',
-    'store',
 ]
 
 MIDDLEWARE = [
