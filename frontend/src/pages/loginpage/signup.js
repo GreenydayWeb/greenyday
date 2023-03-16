@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import SignupComponent from "./signupcomponent";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Signup = () => {
   return (
@@ -16,6 +17,7 @@ const Signup = () => {
           <SignupComponent></SignupComponent>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

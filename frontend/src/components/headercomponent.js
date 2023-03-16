@@ -99,17 +99,22 @@ const mockdata = [
     items: "샐러드",
   },
   {
-    title: "Sandwich & Wrap",
+    title: "Sandwich",
     links: "/menu/",
     items: "샌드위치",
   },
   {
-    title: "Greek yogyrt & Granola",
+    title: "Wrap",
+    links: "/menu/",
+    items: "랩",
+  },
+  {
+    title: "Greek yogyrt",
     links: "/menu/",
     items: "그릭요거트",
   },
   {
-    title: "Side & Drink",
+    title: "Side",
     links: "/menu/",
     items: "사이드",
   },
@@ -128,18 +133,15 @@ function HeaderComponent() {
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group noWrap align="flex-start">
-        <div>
-          <Link href={item.links + item.items}>
+      <Link href={item.links + item.items}>
+        <Group noWrap align="flex-start">
+          <div>
             <Text size="sm" fw={500}>
               {item.title}
             </Text>
-          </Link>
-          <Text size="xs" color="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
+          </div>
+        </Group>
+      </Link>
     </UnstyledButton>
   ));
 
@@ -211,13 +213,12 @@ function HeaderComponent() {
           </Group>
           <Space w="xl" />
           <Group className={classes.hiddenMobile} ml="xl">
-            <Button variant="default">
-              <a href="/loginpage/login">Log in</a>
-            </Button>
-            <Button variant="default">
-              {" "}
-              <a href="/loginpage/signup">Sign up</a>
-            </Button>
+            <a href="/loginpage/login">
+              <Button variant="default">Log in</Button>
+            </a>
+            <a href="/loginpage/signup">
+              <Button variant="default"> Sign up</Button>
+            </a>
           </Group>
 
           <Burger
@@ -251,11 +252,11 @@ function HeaderComponent() {
           </a>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
-              <Box component="span" mr={5}>
-                <Link href="/menu/샐러드" className={classes.link}>
+              <Link href="/menu/샐러드" className={classes.link}>
+                <Box component="span" mr={5}>
                   <Text fz="xl">Menu</Text>
-                </Link>
-              </Box>
+                </Box>
+              </Link>
               <IconChevronDown size={16} color={theme.fn.primaryColor()} />
             </Center>
           </UnstyledButton>
@@ -275,13 +276,12 @@ function HeaderComponent() {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">
-              <a href="/loginpage/login">Log in</a>
-            </Button>
-            <Button variant="default">
-              {" "}
-              <a href="/loginpage/signup">Sign up</a>
-            </Button>
+            <a href="/loginpage/login">
+              <Button variant="default">Log in</Button>
+            </a>
+            <a href="/loginpage/signup">
+              <Button variant="default"> Sign up</Button>
+            </a>
           </Group>
         </ScrollArea>
       </Drawer>
