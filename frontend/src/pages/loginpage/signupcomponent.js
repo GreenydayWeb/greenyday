@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { signupRequestAction } from "../../reducers/user";
 import { ON_CHANGE_EMAILOVERLAP } from "../../reducers/user";
 import { ON_CHANGE_NICKNAMEOVERLAP } from "../../reducers/user";
+import { ON_CHANGE_PHONEOVERLAP } from "../../reducers/user";
+
 import Router from "next/router";
 import { frontUrl } from "../../config/config";
 const { Text } = Typography;
@@ -30,15 +32,11 @@ const fontStyle = {
 const SignupComponent = () => {
   const dispatch = useDispatch();
   const { signUpDone } = useSelector((state) => state.user);
-  var { emailOverLap } = useSelector((state) => state.user);
-  var { nicknameOverLap } = useSelector((state) => state.user);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  var { emailOverLap, nicknameOverLap, phoneOverLap } = useSelector(
+    (state) => state.user
+  );
 
   const emailOnChange = (event) => {
-    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
-  };
-
-  const nameOnChange = (event) => {
     dispatch({ type: ON_CHANGE_EMAILOVERLAP });
   };
 
@@ -47,15 +45,15 @@ const SignupComponent = () => {
   };
 
   const phoneOnChange = (event) => {
-    dispatch({ type: ON_CHANGE_EMAILOVERLAP });
+    dispatch({ type: ON_CHANGE_PHONEOVERLAP });
   };
 
   useEffect(() => {
     console.log(signUpDone);
     if (signUpDone) {
-      Router.push(frontUrl + "/loginpage/login");
+      Router.push("/loginpage/login");
     }
-  }, [signUpDone, emailOverLap]);
+  }, [signUpDone, emailOverLap, nicknameOverLap, phoneOverLap]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -79,16 +77,6 @@ const SignupComponent = () => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
   };
 
   return (
@@ -139,7 +127,7 @@ const SignupComponent = () => {
                 help="중복된 이메일입니다."
               >
                 <Input
-                  style={{ borderRadius: "0px" }}
+                  style={{ borderRadius: "19px" }}
                   placeholder="예) greenyday1234@gmail.com"
                   onChange={emailOnChange}
                 />
@@ -267,7 +255,44 @@ const SignupComponent = () => {
             </Form.Item>
           </Col>
           <Col span={11}>
-            <Form.Item
+            {/* 전화번호 */}
+            <div>
+              {!phoneOverLap ? (
+                <Form.Item
+                  name="phonenumber"
+                  label={<Text style={fontStyle}>휴대폰 번호</Text>}
+                  rules={[
+                    {
+                      required: true,
+                      message: "전화번호를 입력해 주세요!",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="010********"
+                    style={{ borderRadius: "19px" }}
+                  />
+                </Form.Item>
+              ) : (
+                <div>
+                  {" "}
+                  <Form.Item
+                    name="phonenumber"
+                    label={<Text style={fontStyle}>휴대폰 번호</Text>}
+                    validateStatus="error"
+                    help="중복된 번호입니다."
+                  >
+                    <Input
+                      placeholder="010********"
+                      style={{ borderRadius: "19px" }}
+                      onChange={phoneOnChange}
+                    />
+                  </Form.Item>
+                </div>
+              )}
+            </div>
+            {/* <Form.Item
               name="phonenumber"
               label={<Text style={fontStyle}>휴대폰 번호</Text>}
               rules={[
@@ -282,7 +307,7 @@ const SignupComponent = () => {
                 placeholder="010********"
                 style={{ borderRadius: "19px" }}
               />
-            </Form.Item>
+            </Form.Item> */}
           </Col>
         </Row>
 

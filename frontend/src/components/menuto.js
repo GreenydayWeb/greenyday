@@ -1,5 +1,12 @@
 import { backUrl } from "../config/config";
 import Link from "next/link";
+function cutString(str, maxLength) {
+  str += " ";
+  let cutStr = str.substring(0, maxLength);
+  let lastIndex = cutStr.lastIndexOf(" ");
+  cutStr = cutStr.substring(0, lastIndex);
+  return cutStr;
+}
 
 const MenuTo = ({ menus }) => {
   const imgurl = backUrl + menus.image;
@@ -17,8 +24,9 @@ const MenuTo = ({ menus }) => {
         {menus.name}
       </div>
 
-      <p class=" display:block  mx-3  text-center overflow-ellipsis overflow-hidden">
-        {menus.description}
+      <p class=" display:block  mx-3  text-center overflow-ellipsis overflow-hidden ">
+        {/* {menus.description} */}
+        {cutString(menus.description, 50) + "..."}
       </p>
     </div>
   );

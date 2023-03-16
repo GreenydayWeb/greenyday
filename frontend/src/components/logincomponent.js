@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Typography } from "antd";
 import { Button, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Divider, Form, Input, Row, Col } from "antd";
 import { LOG_IN_REQUEST } from "../reducers/user";
 import KakaoLogin from "../pages/kakaologin";
+import { useRouter } from "next/router";
 
 const { Text } = Typography;
 const fontStyle = {
@@ -16,6 +17,16 @@ const fontStyle = {
 
 const LoginComponent = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const { logInDone } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    console.log(logInDone);
+    if (logInDone) {
+      router.push("/home");
+    }
+  }, [logInDone]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -139,7 +150,7 @@ const LoginComponent = () => {
                     </Text>
                   </a>
                   <p style={{ color: "rgba(116, 116, 116, 1)" }}>/</p>
-                  <a class="/signup" href="/home">
+                  <a class="/signup" href="/signup">
                     <Text
                       fontSize="14px"
                       style={{ color: "rgba(116, 116, 116, 1)" }}

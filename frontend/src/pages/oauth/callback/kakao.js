@@ -23,7 +23,7 @@ const Kakao = () => {
       })
       .then((res) => {
         console.log(res.data);
-        return Router.push("/");
+        return Router.push("/home");
       })
       .catch((err) => console.error(err.response));
   }

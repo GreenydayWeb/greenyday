@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import LoginComponent from "../../components/logincomponent";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Login = () => {
   return (
@@ -22,6 +23,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

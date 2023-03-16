@@ -1,13 +1,18 @@
 import { all, fork, put, call, takeLatest, throttle } from "redux-saga/effects";
 import axios from "axios";
+
 import { backUrl } from "../config/config";
 
 import { SIGN_UP_REQUEST } from "../reducers/user";
 import { SIGN_UP_SUCCESS } from "../reducers/user";
-import { SIGN_UP_FAIL_EMAILOVERLAP } from "../reducers/user";
+import {
+  SIGN_UP_FAIL_EMAILOVERLAP,
+  SIGN_UP_FAIL_NICKNAMEOVERLAP,
+  SIGN_UP_FAIL_PHONEOVERLAP,
+} from "../reducers/user";
 
 import { LOG_IN_REQUEST } from "../reducers/user";
-import { SIGN_UP_FAIL_NICKNAMEOVERLAP } from "../reducers/user";
+import { LOGIN_IN_SUCCESS } from "../reducers/user";
 
 import {
   LOAD_POSTS_FAILURE,
@@ -17,7 +22,7 @@ import {
 
 //회원가입 saga
 function signUpAPI(data) {
-  return axios.post(backUrl + "/accounts/signup/", data);
+  return axios.post(backUrl + "/api/accounts/signup/", data);
 }
 
 function* SignUp(action) {
@@ -44,6 +49,7 @@ function* SignUp(action) {
       }
       if (value == "phone") {
         console.log("phoneerror");
+        yield put({ type: SIGN_UP_FAIL_PHONEOVERLAP });
       }
     }
 
@@ -56,13 +62,17 @@ function* SignUp(action) {
 
 //로그인 saga
 function logInAPI(values) {
-  return axios.post(backUrl + "/accounts/login/", values);
+  return axios.post(backUrl + "/api/accounts/login/", values);
 }
 
 function* LogIn(action) {
   try {
     const result = yield call(logInAPI, action.values);
-    console.log("access", result.data);
+    localStorage.setItem("access_token", result.data.access_token);
+    localStorage.setItem("refresh_token", result.data.refresh_token);
+    yield put({
+      type: LOGIN_IN_SUCCESS,
+    });
 
     // yield put({
     //   type: SIGN_UP_SUCCESS,

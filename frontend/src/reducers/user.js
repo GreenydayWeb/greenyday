@@ -23,6 +23,7 @@ export const initialState = {
   emailOverLap: false,
   nicknameOverLap: false,
   nickname: false,
+  phoneOverLap: false,
 
   mainPosts: [],
 
@@ -38,15 +39,18 @@ export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 // 중복 실패
 export const SIGN_UP_FAIL_EMAILOVERLAP = "SIGN_UP_FAIL_EMAILOVERLAP";
 export const SIGN_UP_FAIL_NICKNAMEOVERLAP = "SIGN_UP_FAIL_NICKNAMEOVERLAP";
+export const SIGN_UP_FAIL_PHONEOVERLAP = "SIGN_UP_FAIL_PHONEOVERLAP";
 
 export const ON_CHANGE_EMAILOVERLAP = "ON_CHANGE_EMAILOVERLAP";
 export const ON_CHANGE_NICKNAMEOVERLAP = "ON_CHANGE_NICKNAMEOVERLAP";
+export const ON_CHANGE_PHONEOVERLAP = "ON_CHANGE_PHOENEOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
 
 export const LOAD_POSTS_REQUEST = "LOAD_POSTS_REQUEST";
 export const LOAD_POSTS_SUCCESS = "LOAD_POSTS_SUCCESS";
 export const LOAD_POSTS_FAILURE = "LOAD_POSTS_FAILURE";
+export const LOGIN_IN_SUCCESS = "LOGIN_IN_SUCCESS";
 
 export const signupRequestAction = (data) => ({
   type: SIGN_UP_REQUEST,
@@ -60,6 +64,10 @@ const reducer = (state = initialState, action) =>
         draft.signUpDone = true;
         break;
 
+      case LOGIN_IN_SUCCESS:
+        draft.logInDone = true;
+        break;
+
       case SIGN_UP_FAIL_EMAILOVERLAP:
         draft.signUpDone = false;
         draft.emailOverLap = true;
@@ -70,12 +78,21 @@ const reducer = (state = initialState, action) =>
         draft.nicknameOverLap = true;
         break;
 
+      case SIGN_UP_FAIL_PHONEOVERLAP:
+        draft.signUpDone = false;
+        draft.phoneOverLap = true;
+        break;
+
       case ON_CHANGE_EMAILOVERLAP:
         draft.emailOverLap = false;
         break;
 
       case ON_CHANGE_NICKNAMEOVERLAP:
         draft.nicknameOverLap = false;
+        break;
+
+      case ON_CHANGE_PHONEOVERLAP:
+        draft.phoneOverLap = false;
         break;
 
       case LOAD_POSTS_REQUEST:
