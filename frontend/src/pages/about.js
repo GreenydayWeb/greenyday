@@ -7,11 +7,11 @@ function About() {
       <div class="w-full h-[70px] lg:hidden bg-[#ECE4D7]"></div>
       <div class="">
         <img
-          class=" opacity-75 relative w-full h-[700px] "
+          class=" opacity-75 relative w-full lg:h-[700px] h-[300px] "
           src="/about_img.jpg"
         ></img>
         <div class="flex flex-col place-items-center">
-          <div class="absolute tracking-wide top-[820px] mb-[40px] text-[90px] text-[#245A3A] font-bold items-center ">
+          <div class="absolute text-[30px] tracking-wide lg:top-[820px] mb-[40px] lg:text-[90px] text-[#245A3A] font-bold items-center ">
             ABOUT GRENNYDAY
           </div>
           <div>
@@ -27,7 +27,7 @@ function About() {
       </div>
       {/* 그리니데이메뉴 */}
       <div class="flex flex-col place-items-center">
-        <div class="text-[90px] tracking-wide text-[#245A3A] font-bold items-center">
+        <div class="text-[30px] lg:text-[90px] tracking-wide text-[#245A3A] font-bold items-center">
           GREENYDAY MENU
         </div>
       </div>

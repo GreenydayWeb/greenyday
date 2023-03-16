@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Typography } from "antd";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Divider, Form, Input, Row, Col } from "antd";
 import { LOG_IN_REQUEST } from "../reducers/user";

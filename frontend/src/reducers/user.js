@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import produce from "immer";
 
 export const initialState = {
@@ -34,6 +32,7 @@ export const initialState = {
 
 //회원가입 action
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
+export const KAKAO_SIGN_UP_REQUEST = "KAKAO_SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 
 // 중복 실패
@@ -46,6 +45,8 @@ export const ON_CHANGE_NICKNAMEOVERLAP = "ON_CHANGE_NICKNAMEOVERLAP";
 export const ON_CHANGE_PHONEOVERLAP = "ON_CHANGE_PHOENEOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
+export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST ";
+export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS ";
 
 export const LOAD_POSTS_REQUEST = "LOAD_POSTS_REQUEST";
 export const LOAD_POSTS_SUCCESS = "LOAD_POSTS_SUCCESS";
@@ -54,6 +55,11 @@ export const LOGIN_IN_SUCCESS = "LOGIN_IN_SUCCESS";
 
 export const signupRequestAction = (data) => ({
   type: SIGN_UP_REQUEST,
+  data,
+});
+
+export const kakaosignupRequestAction = (data) => ({
+  type: KAKAO_SIGN_UP_REQUEST,
   data,
 });
 
@@ -66,6 +72,10 @@ const reducer = (state = initialState, action) =>
 
       case LOGIN_IN_SUCCESS:
         draft.logInDone = true;
+        break;
+
+      case LOG_OUT_SUCCESS:
+        draft.logInDone = false;
         break;
 
       case SIGN_UP_FAIL_EMAILOVERLAP:

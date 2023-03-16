@@ -1,7 +1,25 @@
-import React, { useState } from "react";
-import { Typography } from "antd";
-import { Button, Modal } from "antd";
-import { Divider, Form, Input, Row, Col, DatePicker, Image } from "antd";
+import React, { useEffect } from "react";
+
+import {
+  Divider,
+  Form,
+  Input,
+  Row,
+  Col,
+  DatePicker,
+  Checkbox,
+  Typography,
+  Button,
+} from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  kakaosignupRequestAction,
+  ON_CHANGE_NICKNAMEOVERLAP,
+  ON_CHANGE_PHONEOVERLAP,
+} from "../../reducers/user";
+
+import Router from "next/router";
+
 const { Text } = Typography;
 
 const fontStyle = {
@@ -12,192 +30,243 @@ const fontStyle = {
 };
 
 const KakaoSignup = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  var { emailOverLap, nicknameOverLap, phoneOverLap, signUpDone } = useSelector(
+    (state) => state.user
+  );
+
+  const nicknameOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_NICKNAMEOVERLAP });
+  };
+
+  const phoneOnChange = (event) => {
+    dispatch({ type: ON_CHANGE_PHONEOVERLAP });
+  };
+
+  useEffect(() => {
+    if (signUpDone) {
+      Router.push("/loginpage/login");
+    }
+  }, [signUpDone, emailOverLap, nicknameOverLap, phoneOverLap]);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    const data = {
+      email: localStorage.getItem("email"),
+      nickname: values.nickname,
+      phone: values.phonenumber,
+      username: values.name,
+      birth:
+        values.datepicker.$y +
+        "-" +
+        String(parseInt(values.datepicker.$M) + 1) +
+        "-" +
+        values.datepicker.$D,
+    };
+
+    dispatch(kakaosignupRequestAction(data));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const onFinishFailed = (errorInfo) => {};
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
-      <Modal
-        title={
-          <Text
-            style={{
-              fontSize: 44,
-              fontWeight: 700,
-              fontFamily: "sansneo_light",
-              color: "rgba(96, 96, 96, 1)",
-            }}
-          >
-            카카오로 회원가입
-          </Text>
-        }
-        footer={null}
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+      <Form
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        layout="vertical"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <div
-          style={{
-            fontSize: 16,
-            fontWeight: 500,
-            color: "rgba(121, 120, 120, 1)",
-            fontFamily: "sansneo_light",
-            margin: "0 20px 20px 0",
-          }}
-        >
-          샐러드를 주문하려면 회원가입이 필요해요!{" "}
-        </div>
-        <Form
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          layout="vertical"
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Row justify="space-between">
-            <Col span={11}>
-              <Form.Item
-                name="name"
-                label={<Text style={fontStyle}>이름</Text>}
-                rules={[
-                  {
-                    required: true,
-                    message: "이름을 입력해 주세요!",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="예) 홍길동"
-                  style={{ borderRadius: "0px" }}
-                />
-              </Form.Item>
-            </Col>
-            <Col span={11}>
-              <Form.Item
-                name="nickname"
-                label={<Text style={fontStyle}>닉네임</Text>}
-                rules={[
-                  {
-                    required: true,
-                    message: "닉네임을 입력해 주세요!",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="예) 홍길동"
-                  style={{ borderRadius: "0px" }}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
+        <Row justify="space-between">
+          <Col span={11}>
+            {/* 이름 입력 */}
+            <Form.Item
+              name="name"
+              label={<Text style={fontStyle}>이름</Text>}
+              rules={[
+                {
+                  required: true,
+                  message: "이름을 입력해 주세요!",
+                  whitespace: true,
+                },
+              ]}
+            >
+              <Input
+                placeholder="예) 홍길동"
+                style={{ borderRadius: "19px" }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            {/* 닉네임 입력 */}
 
-          <Row justify="space-between">
-            <Col span={11}>
-              <Form.Item
-                name="date-picker"
-                label={<Text style={fontStyle}>생년월일</Text>}
-                rules={[
-                  {
-                    type: "object",
-                    required: true,
-                    message: "생년월일을 입력해 주세요!",
-                  },
-                ]}
-              >
-                <DatePicker
-                  style={{ borderRadius: "0px", width: "100%" }}
-                  placeholder="0000-00-00"
-                />
-              </Form.Item>
-            </Col>
-            <Col span={11}>
-              <Form.Item
-                name="phonenumber"
-                label={<Text style={fontStyle}>휴대폰 번호</Text>}
-                rules={[
-                  {
-                    required: true,
-                    message: "전화번호를 입력해 주세요!",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="000-000-000"
-                  style={{ borderRadius: "0px" }}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          <Divider />
-
-          <Row gutter={[3, 20]}>
-            <Col span={24}>
-              <Row gutter={[10, 10]}>
-                <Col span={1}>
-                  <Image src="/circle.png"></Image>
-                </Col>
-
-                <div fontSize="14px">
-                  “가입하기”를 클릭하면 저희 서비스 이용약관 가입에 동의하게
-                  됩니다.
-                  <br />
-                  이메일과 수신정보는 마이페이지에서 언제든 옵트 아웃하실 수
-                  있어요.{" "}
+            <div>
+              {!nicknameOverLap ? (
+                <Form.Item
+                  name="nickname"
+                  label={<Text style={fontStyle}>닉네임</Text>}
+                  rules={[
+                    {
+                      required: true,
+                      message: "닉네임을 입력해 주세요!",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="예) 홍길동"
+                    style={{ borderRadius: "19px" }}
+                  />
+                </Form.Item>
+              ) : (
+                <Form.Item
+                  name="nickname"
+                  label={<Text style={fontStyle}>닉네임</Text>}
+                  validateStatus="error"
+                  help="중복된 닉네임입니다."
+                >
+                  <Input
+                    placeholder="예) 홍길동"
+                    style={{ borderRadius: "19px" }}
+                    onChange={nicknameOnChange}
+                  />
+                </Form.Item>
+              )}
+            </div>
+          </Col>
+        </Row>
+        <Row justify="space-between">
+          <Col span={11}>
+            {/* 생년월일 입력 */}
+            <Form.Item
+              name="datepicker"
+              label={<Text style={fontStyle}>생년월일</Text>}
+              rules={[
+                {
+                  type: "object",
+                  required: true,
+                  message: "생년월일을 입력해 주세요!",
+                },
+              ]}
+            >
+              <DatePicker
+                style={{ borderRadius: "19px", width: "100%" }}
+                placeholder="0000-00-00"
+              />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            {/* 전화번호 */}
+            <div>
+              {!phoneOverLap ? (
+                <Form.Item
+                  name="phonenumber"
+                  label={<Text style={fontStyle}>휴대폰 번호</Text>}
+                  rules={[
+                    {
+                      required: true,
+                      message: "전화번호를 입력해 주세요!",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="010********"
+                    style={{ borderRadius: "19px" }}
+                  />
+                </Form.Item>
+              ) : (
+                <div>
+                  {" "}
+                  <Form.Item
+                    name="phonenumber"
+                    label={<Text style={fontStyle}>휴대폰 번호</Text>}
+                    validateStatus="error"
+                    help="중복된 번호입니다."
+                  >
+                    <Input
+                      placeholder="010********"
+                      style={{ borderRadius: "19px" }}
+                      onChange={phoneOnChange}
+                    />
+                  </Form.Item>
                 </div>
-              </Row>
-            </Col>
+              )}
+            </div>
+            {/* <Form.Item
+              name="phonenumber"
+              label={<Text style={fontStyle}>휴대폰 번호</Text>}
+              rules={[
+                {
+                  required: true,
+                  message: "전화번호를 입력해 주세요!",
+                  whitespace: true,
+                },
+              ]}
+            >
+              <Input
+                placeholder="010********"
+                style={{ borderRadius: "19px" }}
+              />
+            </Form.Item> */}
+          </Col>
+        </Row>
 
-            <Col span={24}>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
+        <Row gutter={[3, 20]}>
+          <Col span={24}>
+            <Row gutter={[10, 10]}></Row>
+          </Col>
+          <Col span={24}>
+            <Divider />
+            <Form.Item
+              name="agreement"
+              valuePropName="checked"
+              rules={[
+                {
+                  validator: (_, value) =>
+                    value
+                      ? Promise.resolve()
+                      : Promise.reject(new Error("이용약관에 동의 해주세요!")),
+                },
+              ]}
+            >
+              <Checkbox class="">
+                <p class="text-[#404016] text-[15px] ">이용약관 동의(필수)</p>{" "}
+              </Checkbox>
+            </Form.Item>
+
+            <Form.Item name="agreement2" valuePropName="checked2">
+              <Checkbox class="">
+                <p class="text-[#404016] text-[15px] ">이용약관 동의(선택)</p>{" "}
+              </Checkbox>
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{
+                  width: "100%",
+                  height: "57px",
+                  backgroundColor: "rgba(36, 90, 58, 1)",
+                }}
+              >
+                <Text
                   style={{
-                    width: "100%",
-                    height: "57px",
-                    backgroundColor: "rgba(0, 219, 61, 1)",
+                    color: "rgba(255, 255, 255, 1)",
+                    fontSize: "24px",
                   }}
                 >
-                  <Text
-                    style={{
-                      color: "rgba(255, 255, 255, 1)",
-                      fontSize: "24px",
-                    }}
-                  >
-                    가입하기
-                  </Text>
-                </Button>
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-      </Modal>
+                  가입하기
+                </Text>
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
+      </Form>
     </>
   );
 };

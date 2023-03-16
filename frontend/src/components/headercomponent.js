@@ -22,6 +22,8 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { IconChevronDown } from "@tabler/icons-react";
+import { useSelector, useDispatch } from "react-redux";
+import { LOG_OUT_REQUEST } from "../reducers/user";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -126,10 +128,16 @@ const mockdata = [
 ];
 
 function HeaderComponent() {
+  const dispatch = useDispatch();
+  const { logInDone } = useSelector((state) => state.user);
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
+
+  const handlelogOut = () => {
+    dispatch({ type: LOG_OUT_REQUEST });
+  };
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -212,13 +220,25 @@ function HeaderComponent() {
             </a>
           </Group>
           <Space w="xl" />
-          <Group className={classes.hiddenMobile} ml="xl">
-            <a href="/loginpage/login">
-              <Button variant="default">Log in</Button>
-            </a>
-            <a href="/loginpage/signup">
-              <Button variant="default"> Sign up</Button>
-            </a>
+          <Group className={classes.hiddenMobile} mr="xl">
+            {!logInDone ? (
+              <div>
+                <a href="/loginpage/login">
+                  <Button mr="xl" variant="default">
+                    Log in
+                  </Button>
+                </a>
+                <a href="/loginpage/signup">
+                  <Button variant="default"> Sign up</Button>
+                </a>
+              </div>
+            ) : (
+              <div>
+                <a href="/logout">
+                  <Button variant="default">Log out</Button>
+                </a>
+              </div>
+            )}
           </Group>
 
           <Burger
@@ -276,12 +296,24 @@ function HeaderComponent() {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <a href="/loginpage/login">
-              <Button variant="default">Log in</Button>
-            </a>
-            <a href="/loginpage/signup">
-              <Button variant="default"> Sign up</Button>
-            </a>
+            {!logInDone ? (
+              <div>
+                <a href="/loginpage/login">
+                  <Button mr="xl" variant="default">
+                    Log in
+                  </Button>
+                </a>
+                <a href="/loginpage/signup">
+                  <Button variant="default"> Sign up</Button>
+                </a>
+              </div>
+            ) : (
+              <div>
+                <a href="/logout">
+                  <Button variant="default">Log out</Button>
+                </a>
+              </div>
+            )}
           </Group>
         </ScrollArea>
       </Drawer>

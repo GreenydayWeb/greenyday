@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { backUrl } from "../../../config/config";
 import Router from "next/router";
+import { LOG_IN_REQUEST } from "../../../reducers/user";
 
 let mountCount = 1;
 const Kakao = () => {
@@ -15,15 +16,18 @@ const Kakao = () => {
   if (code && !didMount) {
     mountCount++;
     setDidMount(true);
+
     axios
-      .get(`${backUrl}/api/accounts/login/kakao?code=${code}`, {
+      .get(`${backUrl}/api/accounts/login/kakao/?code=${code}`, {
         params: {
           code: code,
         },
       })
       .then((res) => {
-        console.log(res.data);
-        return Router.push("/home");
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("nickname", res.data.nickname);
+
+        return Router.push("/loginpage/kakaoextra");
       })
       .catch((err) => console.error(err.response));
   }
