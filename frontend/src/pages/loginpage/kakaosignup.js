@@ -61,6 +61,7 @@ const KakaoSignup = () => {
         String(parseInt(values.datepicker.$M) + 1) +
         "-" +
         values.datepicker.$D,
+      is_kaka: true,
     };
 
     dispatch(kakaosignupRequestAction(data));

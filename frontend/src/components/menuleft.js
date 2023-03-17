@@ -9,17 +9,14 @@ function cutString(str, maxLength) {
 }
 
 const MenuLeft = ({ menu }) => {
-  const [a, b] = cutString(menu.description, 30);
+  const [a, b] = cutString(menu.description, 20);
 
   return (
     <div class=" lg:w-[80rem] lg:h-[15rem]  bg-[#ECE4D7] mb-6 h-[40rem]">
       <div class=" h-64 flex lg:flex-row flex-col items-center ">
         <img class="w-auto hidden lg:block" src="/greenline.png"></img>
         <div class="lg:hidden border-[1px] border-[#245A3A] w-full"></div>
-        <img
-          class="w-auto h-[20rem] "
-          src={backUrl + menu.itemimges[0].photo}
-        ></img>
+        <img class="w-auto h-[20rem] " src={menu.itemimges[0].photo}></img>
         <div>
           <div class="lg:grid lg:justify-items flex flex-col items-center ">
             <div class=" mb-2 text-[#245A3A] font-bold text-[28px] ">

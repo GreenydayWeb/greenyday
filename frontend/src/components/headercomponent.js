@@ -177,17 +177,18 @@ function HeaderComponent() {
               withinPortal
             >
               <HoverCard.Target>
-                <a href="/menu/샐러드" className={classes.link}>
-                  <Center inline>
-                    <Box component="span" mr={5}>
-                      <Text fz="xl">Menu</Text>
-                    </Box>
-                    <IconChevronDown
-                      size={16}
-                      color={theme.fn.primaryColor()}
-                    />
-                  </Center>
-                </a>
+                <Center inline>
+                  <Box component="span" mr={5}>
+                    {/* hover카드 */}
+                    <Text
+                      style={{ userSelect: "none", fontWeight: "500" }}
+                      fz="xl"
+                    >
+                      Menu
+                    </Text>
+                  </Box>
+                  <IconChevronDown size={16} color={theme.fn.primaryColor()} />
+                </Center>
               </HoverCard.Target>
 
               <HoverCard.Dropdown
@@ -195,7 +196,8 @@ function HeaderComponent() {
                 style={{ backgroundColor: "rgba(236, 228, 215, 1)" }}
               >
                 <Group position="apart" px="md">
-                  <Text fw={500}>Menu</Text>
+                  {/* dropdown */}
+                  <Text style={{ userSelect: "none" }}>Menu</Text>
                   <Anchor href="#" fz="xs">
                     View all
                   </Anchor>
@@ -272,11 +274,13 @@ function HeaderComponent() {
           </a>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
-              <Link href="/menu/샐러드" className={classes.link}>
-                <Box component="span" mr={5}>
-                  <Text fz="xl">Menu</Text>
-                </Box>
-              </Link>
+              <Box component="span" mr={5}>
+                {/* dropdown */}
+                <Text style={{ userSelect: "none", fontSize: "20px" }}>
+                  Menu
+                </Text>
+              </Box>
+
               <IconChevronDown size={16} color={theme.fn.primaryColor()} />
             </Center>
           </UnstyledButton>

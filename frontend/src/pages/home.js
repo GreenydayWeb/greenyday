@@ -18,9 +18,10 @@ function Home() {
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;
       const image = [];
+      console.log(res.data);
 
       events.map((url) => {
-        image.push(backUrl + url.image);
+        image.push(url.image);
       });
       setimgurl(image);
       setmenu(res.data.items);

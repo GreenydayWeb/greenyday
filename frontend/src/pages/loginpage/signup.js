@@ -13,7 +13,7 @@ const Signup = () => {
         <p class="text-[#797878] text-[20px] mb-[30px]">
           샐러드를 주문하려면 회원가입이 필요해요!
         </p>
-        <div class="w-[500px]  p-[55px] rounded-[60px]">
+        <div class="w-[400px]  lg:w-[600px]  p-[55px] rounded-[60px]">
           <SignupComponent></SignupComponent>
         </div>
       </div>

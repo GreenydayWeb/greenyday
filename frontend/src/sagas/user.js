@@ -3,19 +3,25 @@ import axios from "axios";
 
 import { backUrl } from "../config/config";
 
-import { SIGN_UP_REQUEST, KAKAO_SIGN_UP_REQUEST } from "../reducers/user";
-import { SIGN_UP_SUCCESS } from "../reducers/user";
+import {
+  SIGN_UP_REQUEST,
+  KAKAO_SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
+} from "../reducers/user";
+
 import {
   SIGN_UP_FAIL_EMAILOVERLAP,
   SIGN_UP_FAIL_NICKNAMEOVERLAP,
   SIGN_UP_FAIL_PHONEOVERLAP,
 } from "../reducers/user";
 
-import { LOG_IN_REQUEST } from "../reducers/user";
-import { LOG_OUT_REQUEST } from "../reducers/user";
-import { LOGIN_IN_SUCCESS } from "../reducers/user";
+import {
+  LOG_IN_REQUEST,
+  LOG_OUT_REQUEST,
+  LOGIN_IN_SUCCESS,
+  LOG_OUT_SUCCESS,
+} from "../reducers/user";
 
-import { LOG_OUT_SUCCESS } from "../reducers/user";
 import {
   LOAD_POSTS_FAILURE,
   LOAD_POSTS_REQUEST,
@@ -57,6 +63,7 @@ function* SignUp(action) {
 }
 
 function kakaosignUpAPI(data) {
+  console.log(backUrl + "/api/accounts/signup/");
   console.log(data);
   return axios.post(backUrl + "/api/accounts/signup/", data);
 }

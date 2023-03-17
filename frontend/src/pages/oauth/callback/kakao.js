@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { backUrl } from "../../../config/config";
 import Router from "next/router";
-import { LOG_IN_REQUEST } from "../../../reducers/user";
 
 let mountCount = 1;
 const Kakao = () => {
