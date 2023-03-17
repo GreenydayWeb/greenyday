@@ -22,20 +22,16 @@ const LoginComponent = () => {
   const { logInDone } = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(logInDone);
     if (logInDone) {
       router.push("/home");
     }
   }, [logInDone]);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     dispatch({ type: LOG_IN_REQUEST, values });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => {};
 
   return (
     <>

@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { useRouter } from "next/router";
-// import { LOG_IN_REQUEST } from "../../reducers/menu";
 
 function Menu() {
   const [menu, setMenu] = useState([]);

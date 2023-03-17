@@ -21,7 +21,7 @@ import {
   LOG_OUT_REQUEST,
   LOGIN_IN_SUCCESS,
   LOG_OUT_SUCCESS,
-  KAKO_LOGIN,
+  LOGIN_IN_FAIL,
 } from "../reducers/user";
 
 import {
@@ -43,9 +43,8 @@ function* SignUp(action) {
       type: SIGN_UP_SUCCESS,
     });
   } catch (err) {
-    console.log("err", err.response);
     const errObject = err.response.data;
-    console.log(errObject);
+
     for (var value in errObject) {
       if (value == "email") {
         yield put({
@@ -53,11 +52,9 @@ function* SignUp(action) {
         });
       }
       if (value == "nickname") {
-        console.log("닉네임 에러");
         yield put({ type: SIGN_UP_FAIL_NICKNAMEOVERLAP });
       }
       if (value == "phone") {
-        console.log("phoneerror");
         yield put({ type: SIGN_UP_FAIL_PHONEOVERLAP });
       }
     }
@@ -71,7 +68,7 @@ function kakaosignUpAPI(data) {
 function* KakaoSignUp(action) {
   try {
     const result = yield call(kakaosignUpAPI, action.data);
-    console.log("access", result.data);
+
     localStorage.removeItem("email");
     localStorage.removeItem("nickname");
 
@@ -82,16 +79,13 @@ function* KakaoSignUp(action) {
       type: LOGIN_IN_SUCCESS,
     });
   } catch (err) {
-    console.log("err", err.response);
     const errObject = err.response.data;
-    console.log(errObject);
+
     for (var value in errObject) {
       if (value == "nickname") {
-        console.log("닉네임 에러");
         yield put({ type: SIGN_UP_FAIL_NICKNAMEOVERLAP });
       }
       if (value == "phone") {
-        console.log("phoneerror");
         yield put({ type: SIGN_UP_FAIL_PHONEOVERLAP });
       }
     }
@@ -100,7 +94,6 @@ function* KakaoSignUp(action) {
 
 //로그인 saga
 function logInAPI(values) {
-  console.log(values);
   return axios.post(backUrl + "/api/accounts/login/", values);
 }
 
@@ -111,16 +104,16 @@ function* LogIn(action) {
     localStorage.setItem("access_token", result.data.access_token);
     localStorage.setItem("refresh_token", result.data.refresh_token);
 
-    if (is_kakao in result.data) {
-      console.log("카카오 로그인 되었다.");
+    if ("is_kakao" in result.data) {
       return Router.push("/home");
     }
     yield put({
       type: LOGIN_IN_SUCCESS,
     });
   } catch (err) {
-    console.log("fail");
-    console.log(err.response);
+    yield put({
+      type: LOGIN_IN_FAIL,
+    });
   }
 }
 
@@ -140,13 +133,12 @@ function loadPostsAPI() {
 function* loadPosts(action) {
   try {
     const result = yield call(loadPostsAPI, action.lastId);
-    console.log(result.data);
+
     yield put({
       type: LOAD_POSTS_SUCCESS,
       data: result.data,
     });
   } catch (err) {
-    console.error(err);
     yield put({
       type: LOAD_POSTS_FAILURE,
 

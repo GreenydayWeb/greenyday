@@ -49,15 +49,12 @@ const SignupComponent = () => {
   };
 
   useEffect(() => {
-    console.log(signUpDone);
     if (signUpDone) {
       Router.push("/loginpage/login");
     }
   }, [signUpDone, emailOverLap, nicknameOverLap, phoneOverLap]);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-
     const data = {
       email: values.email,
       password: values.password,
@@ -75,9 +72,7 @@ const SignupComponent = () => {
     dispatch(signupRequestAction(data));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => {};
 
   return (
     <>
@@ -292,22 +287,6 @@ const SignupComponent = () => {
                 </div>
               )}
             </div>
-            {/* <Form.Item
-              name="phonenumber"
-              label={<Text style={fontStyle}>휴대폰 번호</Text>}
-              rules={[
-                {
-                  required: true,
-                  message: "전화번호를 입력해 주세요!",
-                  whitespace: true,
-                },
-              ]}
-            >
-              <Input
-                placeholder="010********"
-                style={{ borderRadius: "19px" }}
-              />
-            </Form.Item> */}
           </Col>
         </Row>
 
@@ -316,24 +295,6 @@ const SignupComponent = () => {
             <Row gutter={[10, 10]}></Row>
           </Col>
           <Col span={24}>
-            {/* <Form.Item
-              name="agreement"
-              valuePropName="checked"
-              rules={[
-                {
-                  validator: (_, value) =>
-                    value
-                      ? Promise.resolve()
-                      : Promise.reject(new Error("이용약관에 동의 해주세요!")),
-                },
-              ]}
-            >
-              <Checkbox class="">
-                <p class="text-[#404016] text-[15px] font-bold">
-                  전체 약관 동의
-                </p>{" "}
-              </Checkbox>
-            </Form.Item> */}
             <Divider />
             <Form.Item
               name="agreement"

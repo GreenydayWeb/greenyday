@@ -3,6 +3,7 @@ import produce from "immer";
 export const initialState = {
   logInLoading: false,
   logInDone: false, //로그인 시도중
+  logInFail: false,
   logInError: null,
   logOutLoading: false, //로그아웃 시도중
   logOutDone: false,
@@ -45,6 +46,8 @@ export const ON_CHANGE_NICKNAMEOVERLAP = "ON_CHANGE_NICKNAMEOVERLAP";
 export const ON_CHANGE_PHONEOVERLAP = "ON_CHANGE_PHOENEOVERLAP";
 
 export const LOG_IN_REQUEST = "LOGIN_IN_REQUEST ";
+export const LOGIN_IN_FAIL = "LOGIN_IN_FAIL ";
+
 export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST ";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS ";
 
@@ -72,7 +75,11 @@ const reducer = (state = initialState, action) =>
 
       case LOGIN_IN_SUCCESS:
         draft.logInDone = true;
+        draft.logInFail = false;
         break;
+
+      case LOGIN_IN_FAIL:
+        draft.logInFail = true;
 
       case LOG_OUT_SUCCESS:
         draft.logInDone = false;

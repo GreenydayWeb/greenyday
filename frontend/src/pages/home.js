@@ -17,14 +17,12 @@ function Home() {
     axios.get(backUrl + "/api/main/").then((res) => {
       const events = res.data.events;
       const image = [];
-      console.log(res.data);
 
       events.map((url) => {
         image.push(url.image);
       });
       setimgurl(image);
       setmenu(res.data.items);
-      console.log(res.data);
     });
   }, []);
 
@@ -82,36 +80,10 @@ function Home() {
             <img class=" w-[500px] h-[267px] " src="/outside.png " />
           </a>
         </div>
-
-        {/* <div class=" grid lg:grid-cols-2 lg:grid-rows-1 gap-20 grid-rows-2 grid-cols-1 mt-10">
-          <a href="/about">
-            <div class=" grid lg:w-[500px] w-[400px] h-[267px] border-2 border-[#554407] rounded-[45px] p-3">
-              <div class=" place-self-center ">
-                <div class="flex flex-col items-center">
-                  <p class="text-[#554407] text-[30px] font-bold text-center pb-3 ">
-                    GREENY DAY’S <br />
-                    NUTRITION
-                  </p>
-                  <p class=" pb-3 text-[20px]">그리니데이의 건강한 영양정보</p>
-                  <p class="text-[#554407] text-[20px] font-bold"> 둘러보기</p>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="/about ">
-            <img class=" w-[500px] h-[267px] " src="/outside.png " />
-          </a>
-        </div> */}
       </div>
       <Footer />
     </div>
   );
 }
-
-// breakpoints={[
-//   { maxWidth: 1200, height: 678 },
-//   { maxWidth: 1013, height: 571 },
-//   { maxWidth: 768, height: 253 },
-// ]}
 
 export default Home;
