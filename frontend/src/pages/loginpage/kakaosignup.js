@@ -31,7 +31,7 @@ const fontStyle = {
 
 const KakaoSignup = () => {
   const dispatch = useDispatch();
-  var { emailOverLap, nicknameOverLap, phoneOverLap, signUpDone } = useSelector(
+  var { emailOverLap, nicknameOverLap, phoneOverLap, logInDone } = useSelector(
     (state) => state.user
   );
 
@@ -44,10 +44,10 @@ const KakaoSignup = () => {
   };
 
   useEffect(() => {
-    if (signUpDone) {
-      Router.push("/loginpage/login");
+    if (logInDone) {
+      Router.push("/home");
     }
-  }, [signUpDone, emailOverLap, nicknameOverLap, phoneOverLap]);
+  }, [logInDone, emailOverLap, nicknameOverLap, phoneOverLap]);
 
   const onFinish = (values) => {
     const data = {
@@ -61,7 +61,8 @@ const KakaoSignup = () => {
         String(parseInt(values.datepicker.$M) + 1) +
         "-" +
         values.datepicker.$D,
-      is_kaka: true,
+      is_kakao: true,
+      password: "djfslkjfiosjfojsdoji",
     };
 
     dispatch(kakaosignupRequestAction(data));
@@ -186,7 +187,7 @@ const KakaoSignup = () => {
                     name="phonenumber"
                     label={<Text style={fontStyle}>휴대폰 번호</Text>}
                     validateStatus="error"
-                    help="중복된 번호입니다."
+                    help="번호를 다시 입력해 주세요."
                   >
                     <Input
                       placeholder="010********"
@@ -197,22 +198,6 @@ const KakaoSignup = () => {
                 </div>
               )}
             </div>
-            {/* <Form.Item
-              name="phonenumber"
-              label={<Text style={fontStyle}>휴대폰 번호</Text>}
-              rules={[
-                {
-                  required: true,
-                  message: "전화번호를 입력해 주세요!",
-                  whitespace: true,
-                },
-              ]}
-            >
-              <Input
-                placeholder="010********"
-                style={{ borderRadius: "19px" }}
-              />
-            </Form.Item> */}
           </Col>
         </Row>
 

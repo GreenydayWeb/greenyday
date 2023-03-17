@@ -113,7 +113,7 @@ const mockdata = [
   {
     title: "Greek yogyrt",
     links: "/menu/",
-    items: "그릭요거트",
+    items: "요거트",
   },
   {
     title: "Side",
@@ -123,7 +123,7 @@ const mockdata = [
   {
     title: "Lunch box",
     links: "/menu/",
-    items: "런치박스",
+    items: "도시락",
   },
 ];
 

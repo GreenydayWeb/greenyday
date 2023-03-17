@@ -281,7 +281,7 @@ const SignupComponent = () => {
                     name="phonenumber"
                     label={<Text style={fontStyle}>휴대폰 번호</Text>}
                     validateStatus="error"
-                    help="중복된 번호입니다."
+                    help="번호를 다시 입력해주세요."
                   >
                     <Input
                       placeholder="010********"

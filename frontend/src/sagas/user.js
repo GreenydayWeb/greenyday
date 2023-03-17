@@ -2,6 +2,7 @@ import { all, fork, put, call, takeLatest, throttle } from "redux-saga/effects";
 import axios from "axios";
 
 import { backUrl } from "../config/config";
+import Router from "next/router";
 
 import {
   SIGN_UP_REQUEST,
@@ -20,6 +21,7 @@ import {
   LOG_OUT_REQUEST,
   LOGIN_IN_SUCCESS,
   LOG_OUT_SUCCESS,
+  KAKO_LOGIN,
 } from "../reducers/user";
 
 import {
@@ -36,7 +38,7 @@ function signUpAPI(data) {
 function* SignUp(action) {
   try {
     const result = yield call(signUpAPI, action.data);
-    console.log("access", result.data);
+
     yield put({
       type: SIGN_UP_SUCCESS,
     });
@@ -63,8 +65,6 @@ function* SignUp(action) {
 }
 
 function kakaosignUpAPI(data) {
-  console.log(backUrl + "/api/accounts/signup/");
-  console.log(data);
   return axios.post(backUrl + "/api/accounts/signup/", data);
 }
 
@@ -72,8 +72,14 @@ function* KakaoSignUp(action) {
   try {
     const result = yield call(kakaosignUpAPI, action.data);
     console.log("access", result.data);
+    localStorage.removeItem("email");
+    localStorage.removeItem("nickname");
+
+    localStorage.setItem("access_token", result.data.access_token);
+    localStorage.setItem("refresh_token", result.data.refresh_token);
+
     yield put({
-      type: SIGN_UP_SUCCESS,
+      type: LOGIN_IN_SUCCESS,
     });
   } catch (err) {
     console.log("err", err.response);
@@ -94,29 +100,27 @@ function* KakaoSignUp(action) {
 
 //로그인 saga
 function logInAPI(values) {
+  console.log(values);
   return axios.post(backUrl + "/api/accounts/login/", values);
 }
 
 function* LogIn(action) {
   try {
     const result = yield call(logInAPI, action.values);
+
     localStorage.setItem("access_token", result.data.access_token);
     localStorage.setItem("refresh_token", result.data.refresh_token);
+
+    if (is_kakao in result.data) {
+      console.log("카카오 로그인 되었다.");
+      return Router.push("/home");
+    }
     yield put({
       type: LOGIN_IN_SUCCESS,
     });
-
-    // yield put({
-    //   type: SIGN_UP_SUCCESS,
-    // });
   } catch (err) {
     console.log("fail");
     console.log(err.response);
-
-    // yield put({
-    //   type: SIGN_UP_FAILURE,
-    //   error: err.response.data,
-    // });
   }
 }
 
@@ -145,6 +149,7 @@ function* loadPosts(action) {
     console.error(err);
     yield put({
       type: LOAD_POSTS_FAILURE,
+
       error: err.response.data,
     });
   }

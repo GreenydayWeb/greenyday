@@ -12,7 +12,6 @@ function Home() {
   const dispatch = useDispatch();
   const [images, setimgurl] = useState([]);
   const [mainPosts, setmenu] = useState([]);
-  // const { mainPosts } = useSelector((state) => state.user);
 
   useEffect(() => {
     axios.get(backUrl + "/api/main/").then((res) => {
