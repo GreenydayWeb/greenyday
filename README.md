@@ -19,6 +19,8 @@
 > npm install @mantine/core @mantine/hooks @mantine/carousel
 > npm install embla-carousel-react --save
 > npm install --save-dev eslint
+> npm install --save react-helmet
+> npm install @tabler/icons-react
 > ```
 
 ### back
