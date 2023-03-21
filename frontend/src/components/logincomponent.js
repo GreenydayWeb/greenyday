@@ -146,7 +146,7 @@ const LoginComponent = () => {
                     </Text>
                   </a>
                   <p style={{ color: "rgba(116, 116, 116, 1)" }}>/</p>
-                  <a class="/signup" href="/signup">
+                  <a class="/signup" href="/loginpage/signup">
                     <Text
                       fontSize="14px"
                       style={{ color: "rgba(116, 116, 116, 1)" }}

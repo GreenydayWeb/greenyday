@@ -26,7 +26,7 @@ function Menu() {
       <Header />
       <div class="mt-7">
         <div class=" ">
-          <div class="flex flex-col items-center">
+          <div class="flex flex-col items-center my-20">
             {menu.map((m, index) => {
               if (index % 2 == 0) {
                 return (

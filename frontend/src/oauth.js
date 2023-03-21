@@ -1,7 +1,7 @@
 import { frontUrl } from "./config/config";
 
 const CLIENT_ID = "3ec9ad497bc0ec9335ae6a557b415c0a";
-const REDIRECT_URI = frontUrl + "/oauth/callback/kakao/";
+const REDIRECT_URI = frontUrl + "/oauth/callback/kakao";
 
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
