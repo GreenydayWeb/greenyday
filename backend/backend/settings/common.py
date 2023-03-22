@@ -185,17 +185,24 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-# static 파일이 저장될 디렉토리 경로
-STATIC_ROOT = '/var/www/grdays.com/static/'
 
-# static 파일이 위치할 디렉토리 경로
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATIC_URL = '/static/'
 
-# media 파일이 저장될 디렉토리 경로
-MEDIA_ROOT = '/var/www/grdays.com/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 
-# media 파일이 위치할 디렉토리 경로
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIAFILES_LOCATION = 'media'
+STATICFILES_LOCATION = 'static'
+AWS_REGION = 'ap-northeast-2'
+
+AWS_STORAGE_BUCKET_NAME = 'greenyday.co.kr'
+AWS_S3_CUSTOM_DOMAIN = 's3.%s.amazonaws.com/%s' % (AWS_REGION, AWS_STORAGE_BUCKET_NAME)
+
+STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+MEDIA_URL = "https://%s/media/" % AWS_S3_CUSTOM_DOMAIN
+
+DEFAULT_FILE_STORAGE = 'backend.storages.MediaStorage'
+STATICFILES_STORAGE = 'backend.storages.StaticStorage'
