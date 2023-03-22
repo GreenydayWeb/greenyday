@@ -23,7 +23,7 @@ class SignupSerializer(serializers.ModelSerializer):
             user = get_user_model().objects.create(
                 email=validated_data['email'],
                 nickname=validated_data['nickname'],
-                is_kakao=True,
+                is_kakao=validated_data['is_kakao'],
                 phone=validated_data['phone'],
                 username=validated_data['username'],
                 birth=validated_data['birth'],
@@ -35,7 +35,7 @@ class SignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["email", "password", "nickname", "phone", 'username', 'birth']
+        fields = ["email", "password", "nickname", "phone", 'username', 'birth', 'is_kakao']
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=64)
