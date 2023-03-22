@@ -9,7 +9,7 @@ function cutString(str, maxLength) {
 }
 
 const MenuTo = ({ menus }) => {
-  const imgurl = menus.image;
+  const imgurl = menus.image[0];
   const category = menus.category;
 
   return (
