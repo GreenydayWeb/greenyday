@@ -21,6 +21,8 @@
 > npm install --save-dev eslint
 > npm install --save react-helmet
 > npm install @tabler/icons-react
+> npm i @headlessui/react
+> npm i @heroicons/react/24/outline
 > ```
 
 ### back
